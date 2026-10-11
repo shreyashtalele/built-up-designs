@@ -20,167 +20,126 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
   };
 
   return (
-    <>
-      <style jsx global>{`
-        @media (min-width: 1024px) {
-          .mobile-nav-backdrop,
-          .mobile-nav-drawer {
-            display: none !important;
-          }
-        }
-      `}</style>
-
-      {/* BACKDROP */}
-      <div
-        className="mobile-nav-backdrop"
-        onClick={onClose}
-        aria-hidden="true"
+    <div
+      className="lg:hidden"
+      style={{
+        position: "fixed",
+        top: "64px",
+        left: 0,
+        right: 0,
+        height: "calc(100vh - 64px)",
+        width: "100vw",
+        backgroundColor: "#F7F3ED",
+        zIndex: 9999,
+        overflowY: "auto",
+        display: isOpen ? "block" : "none",
+      }}
+    >
+      <nav
+        aria-label="Mobile navigation"
         style={{
-          position: "fixed",
-          top: "64px",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(31,27,22,0.4)",
-          backdropFilter: "blur(4px)",
-          WebkitBackdropFilter: "blur(4px)",
-          zIndex: 40,
-          opacity: isOpen ? 1 : 0,
-          pointerEvents: isOpen ? "auto" : "none",
-          transition: "opacity 0.3s",
-        }}
-      />
-
-      {/* DRAWER */}
-      <div
-        className="mobile-nav-drawer"
-        style={{
-          position: "fixed",
-          top: "64px",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "#F7F3ED",
-          zIndex: 40,
-          overflowY: "auto",
-          transform: isOpen ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.3s ease-out",
+          display: "flex",
+          flexDirection: "column",
+          padding: "16px 20px 32px",
         }}
       >
-        <nav
-          aria-label="Mobile navigation"
+        {NAV_LINKS.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            onClick={onClose}
+            style={{
+              fontFamily: "var(--font-playfair), serif",
+              fontSize: "18px",
+              padding: "14px 0",
+              borderBottom: "1px solid rgba(217,207,192,0.6)",
+              color: isActive(link.href) ? "#1F1B16" : "#5C5247",
+              textDecoration: "none",
+              display: "block",
+            }}
+          >
+            {link.label}
+          </Link>
+        ))}
+
+        <div
           style={{
+            marginTop: "20px",
             display: "flex",
             flexDirection: "column",
-            padding: "32px 20px",
+            gap: "8px",
           }}
         >
-          <div
+          <a
+            href={`tel:${CONTACT.phone}`}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              borderTop: "1px solid rgba(217,207,192,0.6)",
+              fontSize: "13px",
+              color: "#5C5247",
+              textDecoration: "none",
             }}
           >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={onClose}
-                style={{
-                  fontFamily: "var(--font-playfair), serif",
-                  fontSize: "22px",
-                  padding: "20px 0",
-                  borderBottom: "1px solid rgba(217,207,192,0.6)",
-                  color: isActive(link.href) ? "#1F1B16" : "#5C5247",
-                  textDecoration: "none",
-                }}
-                aria-current={isActive(link.href) ? "page" : undefined}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+            {CONTACT.phoneDisplay}
+          </a>
+          <a
+            href={`mailto:${CONTACT.email}`}
+            style={{
+              fontSize: "13px",
+              color: "#5C5247",
+              textDecoration: "none",
+              wordBreak: "break-all",
+            }}
+          >
+            {CONTACT.email}
+          </a>
+        </div>
 
-          <div
+        <div
+          style={{
+            marginTop: "20px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <Link
+            href="/contact"
+            onClick={onClose}
             style={{
-              marginTop: "32px",
               display: "flex",
-              flexDirection: "column",
-              gap: "12px",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#1F1B16",
+              color: "#F7F3ED",
+              fontSize: "11px",
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
+              padding: "14px 20px",
+              textDecoration: "none",
             }}
           >
-            <a
-              href={`tel:${CONTACT.phone}`}
-              style={{
-                fontSize: "14px",
-                color: "#5C5247",
-                textDecoration: "none",
-              }}
-            >
-              {CONTACT.phoneDisplay}
-            </a>
-            <a
-              href={`mailto:${CONTACT.email}`}
-              style={{
-                fontSize: "14px",
-                color: "#5C5247",
-                textDecoration: "none",
-                wordBreak: "break-all",
-              }}
-            >
-              {CONTACT.email}
-            </a>
-          </div>
-
-          <div
+            Get a Consultation
+          </Link>
+          <a
+            href={getWhatsAppLink()}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
-              marginTop: "32px",
               display: "flex",
-              flexDirection: "column",
-              gap: "12px",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "1px solid rgba(31,27,22,0.6)",
+              color: "#1F1B16",
+              fontSize: "11px",
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
+              padding: "14px 20px",
+              textDecoration: "none",
             }}
           >
-            <Link
-              href="/contact"
-              onClick={onClose}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#1F1B16",
-                color: "#F7F3ED",
-                fontSize: "12px",
-                textTransform: "uppercase",
-                letterSpacing: "0.18em",
-                padding: "16px 20px",
-                textDecoration: "none",
-              }}
-            >
-              Get a Consultation
-            </Link>
-            <a
-              href={getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "1px solid rgba(31,27,22,0.6)",
-                color: "#1F1B16",
-                fontSize: "12px",
-                textTransform: "uppercase",
-                letterSpacing: "0.18em",
-                padding: "16px 20px",
-                textDecoration: "none",
-              }}
-            >
-              WhatsApp Us
-            </a>
-          </div>
-        </nav>
-      </div>
-    </>
+            WhatsApp Us
+          </a>
+        </div>
+      </nav>
+    </div>
   );
 }
