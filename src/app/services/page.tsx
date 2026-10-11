@@ -4,7 +4,6 @@ import Image from "next/image";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { HowWeWork } from "@/components/sections/HowWeWork";
-import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
   title: "Services",

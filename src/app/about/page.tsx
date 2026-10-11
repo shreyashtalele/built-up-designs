@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
-import { CONTACT, LOCATIONS } from "@/lib/constants";
+import { LOCATIONS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",

@@ -5,7 +5,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { CTASection } from "@/components/sections/CTASection";
 
 type Category = "all" | "residential" | "commercial";
 

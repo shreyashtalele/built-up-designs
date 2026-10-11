@@ -1,5 +1,3 @@
-// src/app/not-found.tsx
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
