@@ -4,27 +4,31 @@ import { cn } from "@/lib/utils";
 type ContainerProps = {
   children: React.ReactNode;
   className?: string;
-  size?: "default" | "narrow" | "wide";
-  as?: "div" | "section" | "main" | "article";
+  as?: "div" | "section" | "article" | "main" | "nav" | "header" | "footer";
+  size?: "content" | "narrow" | "wide" | "full";
 };
 
 const sizeMap = {
-  narrow: "max-w-4xl",
-  default: "max-w-[1440px]",
-  wide: "max-w-[1600px]",
+  content: "max-w-[1320px]",
+  narrow: "max-w-[960px]",
+  wide: "max-w-[1520px]",
+  full: "max-w-none",
 };
+
+const paddingClass = "px-5 sm:px-8 lg:px-10 xl:px-16";
 
 export function Container({
   children,
   className,
-  size = "default",
   as: Component = "div",
+  size = "content",
 }: ContainerProps) {
   return (
     <Component
       className={cn(
-        "w-full mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin",
+        "w-full mx-auto",
         sizeMap[size],
+        size !== "full" && paddingClass,
         className,
       )}
     >

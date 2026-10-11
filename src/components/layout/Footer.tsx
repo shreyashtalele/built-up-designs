@@ -1,5 +1,6 @@
 // src/components/layout/Footer.tsx
 import Link from "next/link";
+import Image from "next/image";
 import { NAV_LINKS } from "@/data/navigation";
 import { CONTACT, SITE, LOCATIONS } from "@/lib/constants";
 
@@ -7,50 +8,124 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-surface-container-low border-t border-surface-container-highest">
-      <div className="max-w-screen-2xl mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl">
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-gutter pb-space-xl border-b border-surface-container-highest">
-          {/* Column 1: Brand */}
-          <div className="md:col-span-5 flex flex-col items-start gap-space-md">
-            <div className="flex items-center gap-space-sm">
-              <div className="w-11 h-11 border border-surface-container-highest flex items-center justify-center bg-surface-container-lowest">
-                <span className="font-display text-title-lg text-primary leading-none">
-                  B
-                </span>
+    <footer
+      className="w-full"
+      style={{ backgroundColor: "#F2ECE3", borderTop: "1px solid #D9CFC0" }}
+    >
+      <div
+        className="container-content"
+        style={{ paddingTop: "56px", paddingBottom: "56px" }}
+      >
+        <div
+          className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8"
+          style={{ paddingBottom: "48px", borderBottom: "1px solid #D9CFC0" }}
+        >
+          {/* BRAND */}
+          <div
+            className="md:col-span-5"
+            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+          >
+            <Link
+              href="/"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                textDecoration: "none",
+              }}
+            >
+              <div
+                style={{ position: "relative", width: "64px", height: "64px" }}
+              >
+                <Image
+                  src="/images/logo/logo-main.svg"
+                  alt="Built Up Designs"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
-              <div className="flex flex-col">
-                <span className="font-body text-title-lg tracking-widest text-primary uppercase">
-                  Built Up Designs
-                </span>
-                <span className="font-body text-label-sm text-on-surface-variant tracking-[0.2em] uppercase">
-                  Nashik &middot; Mumbai
-                </span>
-              </div>
-            </div>
-            <p className="font-body text-body-md text-on-surface-variant max-w-sm mt-space-xs">
+            </Link>
+            <p
+              style={{
+                fontSize: "14px",
+                lineHeight: 1.7,
+                color: "#5C5247",
+                maxWidth: "360px",
+              }}
+            >
               {SITE.description}
             </p>
-            <div className="mt-space-sm flex flex-col gap-1.5 font-body text-label-sm tracking-widest text-on-surface-variant uppercase">
-              <p>Studio Locations: Nashik / Mumbai, Maharashtra</p>
-              <p>Registration: Architectural &amp; Interior Design Practice</p>
+            <div style={{ display: "flex", gap: "12px" }}>
+              <a
+                href={CONTACT.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "40px",
+                  height: "40px",
+                  border: "1px solid #D9CFC0",
+                  color: "#1F1B16",
+                  fontSize: "10px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.18em",
+                  textDecoration: "none",
+                }}
+              >
+                IG
+              </a>
+              <a
+                href={`https://wa.me/${CONTACT.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "40px",
+                  height: "40px",
+                  border: "1px solid #D9CFC0",
+                  color: "#1F1B16",
+                  fontSize: "10px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.18em",
+                  textDecoration: "none",
+                }}
+              >
+                WA
+              </a>
             </div>
           </div>
 
-          {/* Column 2: Navigation */}
-          <div className="md:col-span-3 flex flex-col gap-space-md">
-            <span className="font-body text-label-sm uppercase tracking-[0.2em] text-primary">
-              Spatial Portfolio
+          {/* EXPLORE */}
+          <div
+            className="md:col-span-3"
+            style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+          >
+            <span
+              style={{
+                fontSize: "10px",
+                textTransform: "uppercase",
+                letterSpacing: "0.24em",
+                color: "#8F6633",
+                fontWeight: 600,
+              }}
+            >
+              Explore
             </span>
             <nav
-              className="flex flex-col gap-2.5"
-              aria-label="Footer navigation"
+              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
             >
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-body text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200"
+                  style={{
+                    fontSize: "14px",
+                    color: "#5C5247",
+                    textDecoration: "none",
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -58,89 +133,149 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Column 3: Studios */}
-          <div className="md:col-span-2 flex flex-col gap-space-md">
-            <span className="font-body text-label-sm uppercase tracking-[0.2em] text-primary">
+          {/* STUDIOS */}
+          <div
+            className="md:col-span-2"
+            style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+          >
+            <span
+              style={{
+                fontSize: "10px",
+                textTransform: "uppercase",
+                letterSpacing: "0.24em",
+                color: "#8F6633",
+                fontWeight: 600,
+              }}
+            >
               Studios
             </span>
-            <div className="flex flex-col gap-space-sm font-body text-body-md text-on-surface-variant">
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+            >
               <div>
-                <p className="font-semibold text-on-surface">Nashik Studio</p>
-                <p>{LOCATIONS.primary.area}</p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "#1F1B16",
+                  }}
+                >
+                  Nashik
+                </p>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#5C5247",
+                    marginTop: "4px",
+                  }}
+                >
+                  {LOCATIONS.primary.area}
+                </p>
               </div>
               <div>
-                <p className="font-semibold text-on-surface">Mumbai Atelier</p>
-                <p>{LOCATIONS.secondary.area}</p>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "#1F1B16",
+                  }}
+                >
+                  Mumbai
+                </p>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#5C5247",
+                    marginTop: "4px",
+                  }}
+                >
+                  {LOCATIONS.secondary.area}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Column 4: Contact */}
-          <div className="md:col-span-2 flex flex-col gap-space-md">
-            <span className="font-body text-label-sm uppercase tracking-[0.2em] text-primary">
-              Studio Concierge
-            </span>
-            <div className="flex flex-col gap-3 font-body text-body-md text-on-surface-variant">
-              <div className="flex flex-col">
-                <span className="font-body text-label-sm text-primary uppercase tracking-wider">
-                  Direct
-                </span>
-                <a
-                  href={`tel:${CONTACT.phone}`}
-                  className="hover:text-secondary transition-colors"
-                >
-                  {CONTACT.phoneDisplay}
-                </a>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-body text-label-sm text-primary uppercase tracking-wider">
-                  Inquiries
-                </span>
-                <a
-                  href={`mailto:${CONTACT.email}`}
-                  className="hover:text-secondary transition-colors break-all"
-                >
-                  {CONTACT.email}
-                </a>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-body text-label-sm text-primary uppercase tracking-wider">
-                  Social
-                </span>
-                <a
-                  href={CONTACT.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-secondary transition-colors"
-                >
-                  {CONTACT.instagram}
-                </a>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-body text-label-sm text-primary uppercase tracking-wider">
-                  Hours
-                </span>
-                <span>{CONTACT.hours}</span>
-              </div>
-            </div>
-            <Link
-              href="/contact"
-              className="inline-block text-left font-body text-label-md text-primary uppercase tracking-[0.14em] border-b border-secondary pb-0.5 hover:text-secondary transition-colors duration-300 mt-space-xs"
+          {/* CONTACT */}
+          <div
+            className="md:col-span-2"
+            style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+          >
+            <span
+              style={{
+                fontSize: "10px",
+                textTransform: "uppercase",
+                letterSpacing: "0.24em",
+                color: "#8F6633",
+                fontWeight: 600,
+              }}
             >
-              {"Book Studio Appointment \u2192"}
-            </Link>
+              Get in Touch
+            </span>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            >
+              <a
+                href={`tel:${CONTACT.phone}`}
+                style={{
+                  fontSize: "14px",
+                  color: "#5C5247",
+                  textDecoration: "none",
+                }}
+              >
+                {CONTACT.phoneDisplay}
+              </a>
+              <a
+                href={`mailto:${CONTACT.email}`}
+                style={{
+                  fontSize: "12px",
+                  color: "#5C5247",
+                  textDecoration: "none",
+                  wordBreak: "break-all",
+                }}
+              >
+                {CONTACT.email}
+              </a>
+              <span style={{ fontSize: "12px", color: "#5C5247" }}>
+                {CONTACT.hours}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-body text-label-sm tracking-wider text-on-surface-variant uppercase">
-          <p>
-            {"\u00A9"} {currentYear} BUILT UP DESIGNS. ALL RIGHTS RESERVED.
+        {/* BOTTOM BAR */}
+        <div
+          style={{
+            paddingTop: "32px",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "16px",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "11px",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "rgba(92,82,71,0.7)",
+            }}
+          >
+            © {currentYear} Built Up Designs. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <span>Bespoke Interior Consultancy</span>
-            <span>/</span>
-            <span>Nashik &middot; Mumbai</span>
+          <div
+            style={{
+              display: "flex",
+              gap: "24px",
+              fontSize: "11px",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "rgba(92,82,71,0.7)",
+            }}
+          >
+            <span>Interior Design Studio</span>
+            <span style={{ color: "#8F6633" }}>/</span>
+            <span>Nashik · Mumbai</span>
           </div>
         </div>
       </div>

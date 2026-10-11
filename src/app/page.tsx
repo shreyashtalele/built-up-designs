@@ -1,14 +1,22 @@
+// src/app/page.tsx
+import { Hero } from "@/components/sections/Hero";
+import { AboutPreview } from "@/components/sections/AboutPreview";
+import { ServicesOverview } from "@/components/sections/ServicesOverview";
+import { HowWeWork } from "@/components/sections/HowWeWork";
+import { SelectedWork } from "@/components/sections/SelectedWork";
+import { ProjectVideo } from "@/components/sections/ProjectVideo";
+import { CTASection } from "@/components/sections/CTASection";
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-surface">
-      <div className="max-w-screen-2xl mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-20">
-        <h1 className="font-display text-display-xl-mobile md:text-display-xl text-primary">
-          Built Up Designs
-        </h1>
-        <p className="font-body text-body-lg text-on-surface-variant mt-4">
-          Setup complete. Ready for component development.
-        </p>
-      </div>
-    </main>
+    <>
+      <Hero />
+      <AboutPreview />
+      <ServicesOverview />
+      <HowWeWork />
+      <SelectedWork />
+      <ProjectVideo />
+      <CTASection />
+    </>
   );
 }

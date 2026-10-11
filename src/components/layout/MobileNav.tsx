@@ -3,9 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/data/navigation";
-import { Button } from "@/components/ui/Button";
 import { CONTACT, getWhatsAppLink } from "@/lib/constants";
 
 type MobileNavProps = {
@@ -23,79 +21,163 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
 
   return (
     <>
-      {/* Backdrop */}
+      <style jsx global>{`
+        @media (min-width: 1024px) {
+          .mobile-nav-backdrop,
+          .mobile-nav-drawer {
+            display: none !important;
+          }
+        }
+      `}</style>
+
+      {/* BACKDROP */}
       <div
-        className={cn(
-          "lg:hidden fixed inset-0 bg-primary/40 backdrop-blur-sm transition-opacity duration-300 z-40",
-          isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none",
-        )}
+        className="mobile-nav-backdrop"
         onClick={onClose}
         aria-hidden="true"
+        style={{
+          position: "fixed",
+          top: "64px",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(31,27,22,0.4)",
+          backdropFilter: "blur(4px)",
+          WebkitBackdropFilter: "blur(4px)",
+          zIndex: 40,
+          opacity: isOpen ? 1 : 0,
+          pointerEvents: isOpen ? "auto" : "none",
+          transition: "opacity 0.3s",
+        }}
       />
 
-      {/* Drawer */}
+      {/* DRAWER */}
       <div
-        className={cn(
-          "lg:hidden fixed top-20 left-0 right-0 bg-surface border-b border-surface-container-highest z-40",
-          "transition-transform duration-300 ease-out",
-          isOpen ? "translate-y-0" : "-translate-y-full pointer-events-none",
-        )}
+        className="mobile-nav-drawer"
+        style={{
+          position: "fixed",
+          top: "64px",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "#F7F3ED",
+          zIndex: 40,
+          overflowY: "auto",
+          transform: isOpen ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.3s ease-out",
+        }}
       >
         <nav
-          className="flex flex-col px-margin-mobile md:px-margin-tablet py-space-lg gap-space-md"
           aria-label="Mobile navigation"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "32px 20px",
+          }}
         >
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={onClose}
-              className={cn(
-                "font-body text-title-lg uppercase tracking-[0.14em] py-3 border-b border-surface-container-highest transition-colors duration-300",
-                isActive(link.href)
-                  ? "text-primary"
-                  : "text-on-surface-variant hover:text-secondary",
-              )}
-              aria-current={isActive(link.href) ? "page" : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col gap-space-sm pt-space-md">
-            <Button href="/contact" variant="primary" size="md">
-              Get a Consultation
-            </Button>
-            <Button
-              href={getWhatsAppLink()}
-              variant="secondary"
-              size="md"
-              external
-            >
-              Talk to Us on WhatsApp
-            </Button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              borderTop: "1px solid rgba(217,207,192,0.6)",
+            }}
+          >
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={onClose}
+                style={{
+                  fontFamily: "var(--font-playfair), serif",
+                  fontSize: "22px",
+                  padding: "20px 0",
+                  borderBottom: "1px solid rgba(217,207,192,0.6)",
+                  color: isActive(link.href) ? "#1F1B16" : "#5C5247",
+                  textDecoration: "none",
+                }}
+                aria-current={isActive(link.href) ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Contact Info */}
-          <div className="flex flex-col gap-1 pt-space-md border-t border-surface-container-highest">
+          <div
+            style={{
+              marginTop: "32px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+            }}
+          >
             <a
               href={`tel:${CONTACT.phone}`}
-              className="font-body text-body-md text-on-surface-variant hover:text-secondary transition-colors"
+              style={{
+                fontSize: "14px",
+                color: "#5C5247",
+                textDecoration: "none",
+              }}
             >
               {CONTACT.phoneDisplay}
             </a>
             <a
               href={`mailto:${CONTACT.email}`}
-              className="font-body text-body-md text-on-surface-variant hover:text-secondary transition-colors"
+              style={{
+                fontSize: "14px",
+                color: "#5C5247",
+                textDecoration: "none",
+                wordBreak: "break-all",
+              }}
             >
               {CONTACT.email}
             </a>
-            <span className="font-body text-label-sm text-outline uppercase tracking-widest mt-2">
-              Nashik · Mumbai
-            </span>
+          </div>
+
+          <div
+            style={{
+              marginTop: "32px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+            }}
+          >
+            <Link
+              href="/contact"
+              onClick={onClose}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#1F1B16",
+                color: "#F7F3ED",
+                fontSize: "12px",
+                textTransform: "uppercase",
+                letterSpacing: "0.18em",
+                padding: "16px 20px",
+                textDecoration: "none",
+              }}
+            >
+              Get a Consultation
+            </Link>
+            <a
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "1px solid rgba(31,27,22,0.6)",
+                color: "#1F1B16",
+                fontSize: "12px",
+                textTransform: "uppercase",
+                letterSpacing: "0.18em",
+                padding: "16px 20px",
+                textDecoration: "none",
+              }}
+            >
+              WhatsApp Us
+            </a>
           </div>
         </nav>
       </div>

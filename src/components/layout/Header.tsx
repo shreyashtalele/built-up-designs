@@ -2,23 +2,28 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/data/navigation";
-import { Button } from "@/components/ui/Button";
 import { MobileNav } from "./MobileNav";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
-  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -32,94 +37,224 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-surface-container-highest">
-      <div className="h-20 max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-space-sm group"
-          aria-label="Built Up Designs — Home"
-        >
-          <div className="w-10 h-10 overflow-hidden flex items-center justify-center border border-surface-container-highest bg-surface-container-low">
-            <span className="font-display text-title-lg text-primary leading-none">
-              B
-            </span>
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="font-body text-title-lg tracking-wider text-primary uppercase leading-none">
-              Built Up Designs
-            </span>
-            <span className="font-body text-label-sm text-on-surface-variant tracking-[0.25em] uppercase mt-0.5">
-              Interior Architecture &amp; Spatial Studio
-            </span>
-          </div>
-        </Link>
+    <>
+      <style jsx global>{`
+        @media (min-width: 1024px) {
+          .header-desktop-nav {
+            display: flex !important;
+          }
+          .header-mobile-toggle {
+            display: none !important;
+          }
+          .header-cta {
+            display: inline-flex !important;
+          }
+        }
+        @media (max-width: 1023px) {
+          .header-desktop-nav {
+            display: none !important;
+          }
+          .header-mobile-toggle {
+            display: flex !important;
+          }
+        }
+        @media (max-width: 639px) {
+          .header-cta {
+            display: none !important;
+          }
+        }
+      `}</style>
 
-        {/* Desktop Navigation */}
-        <nav
-          className="hidden lg:flex items-center gap-space-lg"
-          aria-label="Main navigation"
-        >
-          {NAV_LINKS.map((link) => (
+      <header
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          backgroundColor: scrolled
+            ? "rgba(247,243,237,0.95)"
+            : "rgba(247,243,237,0.85)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderBottom: scrolled
+            ? "1px solid rgba(217,207,192,0.6)"
+            : "1px solid transparent",
+          transition: "background-color 0.3s, border-color 0.3s",
+        }}
+      >
+        <div className="container-content">
+          <div
+            style={{
+              height: "64px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "16px",
+            }}
+          >
+            {/* LOGO */}
             <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "font-body text-label-md uppercase tracking-[0.14em] py-1 transition-colors duration-300",
-                isActive(link.href)
-                  ? "text-primary font-semibold border-b border-secondary"
-                  : "text-on-surface-variant hover:text-secondary",
-              )}
-              aria-current={isActive(link.href) ? "page" : undefined}
+              href="/"
+              aria-label="Built Up Designs — Home"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                textDecoration: "none",
+                flexShrink: 0,
+              }}
             >
-              {link.label}
+              <div
+                style={{ position: "relative", width: "44px", height: "44px" }}
+              >
+                <Image
+                  src="/images/logo/logo-main.svg"
+                  alt="Built Up Designs"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </Link>
-          ))}
-        </nav>
 
-        {/* Desktop CTA + Mobile Menu Toggle */}
-        <div className="flex items-center gap-space-md">
-          <Button
-            href="/contact"
-            variant="primary"
-            size="sm"
-            className="hidden sm:inline-flex"
-          >
-            Get a Consultation
-          </Button>
+            {/* DESKTOP NAV */}
+            <nav
+              className="header-desktop-nav"
+              aria-label="Main navigation"
+              style={{
+                alignItems: "center",
+                gap: "28px",
+              }}
+            >
+              {NAV_LINKS.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    style={{
+                      position: "relative",
+                      fontSize: "11px",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.18em",
+                      fontWeight: active ? 600 : 500,
+                      color: active ? "#1F1B16" : "#5C5247",
+                      paddingBottom: "4px",
+                      textDecoration: "none",
+                    }}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {link.label}
+                    <span
+                      style={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        height: "1px",
+                        width: active ? "100%" : "0%",
+                        backgroundColor: "#8F6633",
+                        transition: "width 0.3s",
+                      }}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-          >
-            <span
-              className={cn(
-                "w-6 h-[1.5px] bg-primary transition-all duration-300",
-                mobileOpen && "rotate-45 translate-y-[7px]",
-              )}
-            />
-            <span
-              className={cn(
-                "w-6 h-[1.5px] bg-primary transition-all duration-300",
-                mobileOpen && "opacity-0",
-              )}
-            />
-            <span
-              className={cn(
-                "w-6 h-[1.5px] bg-primary transition-all duration-300",
-                mobileOpen && "-rotate-45 -translate-y-[7px]",
-              )}
-            />
-          </button>
+            {/* RIGHT SIDE */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                flexShrink: 0,
+              }}
+            >
+              {/* CTA */}
+              <Link
+                href="/contact"
+                className="header-cta"
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#1F1B16",
+                  color: "#F7F3ED",
+                  fontSize: "11px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                  fontWeight: 500,
+                  padding: "10px 20px",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#8F6633";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#1F1B16";
+                }}
+              >
+                Get a Consultation
+              </Link>
+
+              {/* HAMBURGER */}
+              <button
+                type="button"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="header-mobile-toggle"
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
+                style={{
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "36px",
+                  height: "36px",
+                  gap: "5px",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                }}
+              >
+                <span
+                  style={{
+                    width: "20px",
+                    height: "1.5px",
+                    backgroundColor: "#1F1B16",
+                    transition: "transform 0.3s, opacity 0.3s",
+                    transform: mobileOpen
+                      ? "rotate(45deg) translateY(6.5px)"
+                      : "none",
+                  }}
+                />
+                <span
+                  style={{
+                    width: "20px",
+                    height: "1.5px",
+                    backgroundColor: "#1F1B16",
+                    transition: "transform 0.3s, opacity 0.3s",
+                    opacity: mobileOpen ? 0 : 1,
+                  }}
+                />
+                <span
+                  style={{
+                    width: "20px",
+                    height: "1.5px",
+                    backgroundColor: "#1F1B16",
+                    transition: "transform 0.3s, opacity 0.3s",
+                    transform: mobileOpen
+                      ? "rotate(-45deg) translateY(-6.5px)"
+                      : "none",
+                  }}
+                />
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Mobile Navigation Drawer */}
-      <MobileNav isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
-    </header>
+        <MobileNav isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      </header>
+    </>
   );
 }
