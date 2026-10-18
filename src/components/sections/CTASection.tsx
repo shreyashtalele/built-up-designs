@@ -51,8 +51,8 @@ export function CTASection() {
                 maxWidth: "520px",
               }}
             >
-              Whether you are building a new residence in Nashik, redesigning an
-              apartment in Mumbai, or planning a workspace, we are here to help.
+              Whether you are planning a new home, redesigning an apartment in
+              Nashik, or conceptualising a workspace, we are here to help.
             </p>
 
             <div
@@ -148,10 +148,10 @@ export function CTASection() {
                     marginBottom: "8px",
                   }}
                 >
-                  Locations
+                  Studio
                 </span>
                 <span style={{ fontSize: "14px", color: "#1F1B16" }}>
-                  Nashik · Mumbai
+                  Nashik, Maharashtra
                 </span>
               </div>
             </div>

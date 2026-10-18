@@ -3,12 +3,21 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
-import { LOCATIONS } from "@/lib/constants";
+import { CONTACT, LOCATIONS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About — Interior Designer Vaishnavi Mogare",
   description:
-    "Built Up Designs is an interior design studio led by Vaishnavi Mogare, creating thoughtful spaces in Nashik and Mumbai.",
+    "Meet Vaishnavi Mogare, founder of Built Up Designs — a Nashik-based interior design studio creating thoughtful residential and commercial spaces.",
+  alternates: {
+    canonical: "https://buildupdesigns.com/about",
+  },
+  openGraph: {
+    title: "About Built Up Designs — Interior Designer in Nashik",
+    description:
+      "Meet Vaishnavi Mogare, founder of Built Up Designs. A Nashik interior design studio.",
+    images: ["/og-image.png"],
+  },
 };
 
 const PRINCIPLES = [
@@ -72,8 +81,9 @@ export default function AboutPage() {
                   marginBottom: "32px",
                 }}
               >
-                Built Up Designs is an interior design studio focused on
-                creating thoughtful spaces around how people actually live.
+                Built Up Designs is a Nashik-based interior design studio
+                focused on creating thoughtful spaces around how people actually
+                live.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
                 <Button href="/contact" variant="primary" size="md">
@@ -104,7 +114,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOUNDER + STORY */}
+      {/* FOUNDER */}
       <section className="w-full" style={{ backgroundColor: "#F2ECE3" }}>
         <div
           className="container-content"
@@ -155,8 +165,7 @@ export default function AboutPage() {
                 style={{ fontSize: "15px", lineHeight: 1.7, color: "#5C5247" }}
               >
                 Her studio handles residential and commercial interiors across
-                Nashik and Mumbai — from the first site visit to the final
-                handover.
+                Nashik — from the first site visit to the final handover.
               </p>
             </div>
             <div className="w-full lg:w-1/2 order-1 lg:order-2">
@@ -270,7 +279,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SERVICE AREA */}
+      {/* STUDIO — Nashik only, no Mumbai */}
       <section className="w-full" style={{ backgroundColor: "#F2ECE3" }}>
         <div
           className="container-content"
@@ -278,7 +287,7 @@ export default function AboutPage() {
         >
           <div style={{ marginBottom: "40px" }}>
             <SectionLabel style={{ marginBottom: "12px" }}>
-              Where We Work
+              Visit the Studio
             </SectionLabel>
             <h2
               style={{
@@ -288,110 +297,82 @@ export default function AboutPage() {
                 color: "#1F1B16",
               }}
             >
-              Serving Nashik &amp; Mumbai
+              Nashik, Maharashtra
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div style={{ backgroundColor: "#F7F3ED", padding: "32px" }}>
+          <div
+            style={{
+              backgroundColor: "#F7F3ED",
+              padding: "40px 32px",
+              maxWidth: "640px",
+            }}
+          >
+            <span
+              style={{
+                display: "block",
+                fontSize: "10px",
+                textTransform: "uppercase",
+                letterSpacing: "0.24em",
+                color: "#8F6633",
+                fontWeight: 600,
+                marginBottom: "12px",
+              }}
+            >
+              Studio Address
+            </span>
+            <p
+              style={{
+                fontSize: "20px",
+                fontFamily: "var(--font-playfair), serif",
+                color: "#1F1B16",
+                marginBottom: "8px",
+              }}
+            >
+              {CONTACT.address.display}
+            </p>
+            <p
+              style={{
+                fontSize: "14px",
+                lineHeight: 1.7,
+                color: "#5C5247",
+                marginBottom: "24px",
+              }}
+            >
+              {LOCATIONS.primary.description}
+            </p>
+            <div
+              style={{
+                paddingTop: "20px",
+                borderTop: "1px solid #D9CFC0",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "12px",
+              }}
+            >
               <span
                 style={{
-                  display: "block",
-                  fontSize: "10px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.24em",
-                  color: "#8F6633",
-                  fontWeight: 600,
-                  marginBottom: "12px",
-                }}
-              >
-                {LOCATIONS.primary.label}
-              </span>
-              <h3
-                style={{
-                  fontFamily: "var(--font-playfair), serif",
-                  fontSize: "26px",
-                  color: "#1F1B16",
-                  marginBottom: "16px",
-                }}
-              >
-                {LOCATIONS.primary.city}
-              </h3>
-              <p
-                style={{
-                  fontSize: "14px",
-                  lineHeight: 1.7,
-                  color: "#5C5247",
-                  marginBottom: "24px",
-                }}
-              >
-                {LOCATIONS.primary.description}
-              </p>
-              <div
-                style={{
-                  paddingTop: "20px",
-                  borderTop: "1px solid #D9CFC0",
-                  display: "flex",
-                  justifyContent: "space-between",
                   fontSize: "11px",
                   textTransform: "uppercase",
                   letterSpacing: "0.14em",
                   color: "#5C5247",
                 }}
               >
-                <span>Studio</span>
-                <span>{LOCATIONS.primary.area}</span>
-              </div>
-            </div>
-            <div style={{ backgroundColor: "#F7F3ED", padding: "32px" }}>
-              <span
-                style={{
-                  display: "block",
-                  fontSize: "10px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.24em",
-                  color: "#8F6633",
-                  fontWeight: 600,
-                  marginBottom: "12px",
-                }}
-              >
-                {LOCATIONS.secondary.label}
+                {CONTACT.hours}
               </span>
-              <h3
-                style={{
-                  fontFamily: "var(--font-playfair), serif",
-                  fontSize: "26px",
-                  color: "#1F1B16",
-                  marginBottom: "16px",
-                }}
-              >
-                {LOCATIONS.secondary.city}
-              </h3>
-              <p
+              <a
+                href={`tel:${CONTACT.phone}`}
                 style={{
                   fontSize: "14px",
-                  lineHeight: 1.7,
-                  color: "#5C5247",
-                  marginBottom: "24px",
+                  color: "#1F1B16",
+                  textDecoration: "none",
+                  fontWeight: 600,
                 }}
               >
-                {LOCATIONS.secondary.description}
-              </p>
-              <div
-                style={{
-                  paddingTop: "20px",
-                  borderTop: "1px solid #D9CFC0",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  fontSize: "11px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.14em",
-                  color: "#5C5247",
-                }}
-              >
-                <span>Atelier</span>
-                <span>{LOCATIONS.secondary.area}</span>
-              </div>
+                {CONTACT.phoneDisplay}
+              </a>
             </div>
           </div>
         </div>

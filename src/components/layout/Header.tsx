@@ -49,17 +49,25 @@ export function Header() {
           ? "1px solid rgba(217,207,192,0.6)"
           : "1px solid transparent",
         transition: "background-color 0.3s, border-color 0.3s",
+        colorScheme: "light",
       }}
     >
       <div className="container-content">
-        <div className="h-16 flex items-center justify-between gap-4">
-          {/* LOGO */}
+        <div className="h-16 md:h-[72px] flex items-center justify-between gap-4">
+          {/* LOGO — larger now */}
           <Link
             href="/"
             aria-label="Built Up Designs — Home"
             className="flex items-center shrink-0"
           >
-            <div className="relative w-11 h-11">
+            <div
+              style={{
+                position: "relative",
+                width: "52px",
+                height: "52px",
+              }}
+              className="md:!w-[64px] md:!h-[64px]"
+            >
               <Image
                 src="/images/logo/logo-main.svg"
                 alt="Built Up Designs"
@@ -70,7 +78,7 @@ export function Header() {
             </div>
           </Link>
 
-          {/* DESKTOP NAV — hidden below lg, flex above */}
+          {/* DESKTOP NAV */}
           <nav
             className="hidden lg:flex items-center gap-7"
             aria-label="Main navigation"
@@ -112,10 +120,10 @@ export function Header() {
 
           {/* RIGHT SIDE */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* CTA — hidden below sm */}
+            {/* CTA — desktop only */}
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center justify-center"
+              className="hidden lg:inline-flex items-center justify-center"
               style={{
                 backgroundColor: "#1F1B16",
                 color: "#F7F3ED",
@@ -131,7 +139,7 @@ export function Header() {
               Get a Consultation
             </Link>
 
-            {/* HAMBURGER — hidden above lg */}
+            {/* HAMBURGER */}
             <button
               type="button"
               onClick={() => setMobileOpen((prev) => !prev)}

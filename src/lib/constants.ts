@@ -2,9 +2,9 @@
 
 export const SITE = {
   name: "Built Up Designs",
-  tagline: "Interior Architecture & Spatial Studio",
+  tagline: "Aligning space, Elevating lives",
   description:
-    "Curating bespoke living spaces, luxury residences, and architectural environments tailored for refined modern living.",
+    "Built Up Designs is a Nashik-based interior design studio creating warm, functional homes and workspaces.",
   url: "https://buildupdesigns.com",
 } as const;
 
@@ -16,22 +16,23 @@ export const CONTACT = {
   instagram: "@built_up_designs",
   instagramUrl: "https://instagram.com/built_up_designs",
   hours: "Mon — Sat // 10:00 - 19:00 IST",
+  address: {
+    street: "M.G. Road",
+    city: "Nashik",
+    state: "Maharashtra",
+    pincode: "",
+    country: "India",
+    display: "M.G. Road, Nashik, Maharashtra",
+  },
 } as const;
 
 export const LOCATIONS = {
   primary: {
     city: "Nashik",
-    label: "Primary Practice",
-    area: "Samarth Nagar",
+    label: "Studio",
+    area: "M.G. Road",
     description:
-      "Residential villas, estate homes, penthouses, and bespoke turnkey interior consultancy tailored for quiet permanence and landscape integration.",
-  },
-  secondary: {
-    city: "Mumbai",
-    label: "Urban Studio",
-    area: "Bandra West",
-    description:
-      "Urban residences, bespoke boutique offices, and commercial interior architecture prioritizing spatial clarity and tailored material palette execution.",
+      "Our studio is based in Nashik. We design homes, villas, and boutique commercial spaces across the city.",
   },
 } as const;
 

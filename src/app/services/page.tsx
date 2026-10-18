@@ -4,11 +4,21 @@ import Image from "next/image";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { HowWeWork } from "@/components/sections/HowWeWork";
+import { FAQ } from "@/components/sections/FAQ";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Interior Design Services in Nashik",
   description:
-    "Interior design services in Nashik and Mumbai — residential interiors, commercial spaces, and design consultation.",
+    "Residential interior design, commercial interiors, and design consultation services in Nashik by Built Up Designs. Explore our interior design solutions.",
+  alternates: {
+    canonical: "https://buildupdesigns.com/services",
+  },
+  openGraph: {
+    title: "Interior Design Services in Nashik | Built Up Designs",
+    description:
+      "Residential, commercial, and design consultation services in Nashik by Built Up Designs.",
+    images: ["/og-image.png"],
+  },
 };
 
 const SERVICES = [
@@ -249,6 +259,7 @@ export default function ServicesPage() {
       })}
 
       <HowWeWork />
+      <FAQ />
     </>
   );
 }

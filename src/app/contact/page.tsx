@@ -6,9 +6,18 @@ import { InquiryForm } from "@/components/forms/InquiryForm";
 import { CONTACT, getWhatsAppLink, getPhoneLink } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — Interior Design Studio in Nashik",
   description:
-    "Get in touch with Built Up Designs for interior design consultation in Nashik and Mumbai.",
+    "Get in touch with Built Up Designs — Nashik interior design studio. Call, WhatsApp, or email us. Studio at M.G. Road, Nashik.",
+  alternates: {
+    canonical: "https://buildupdesigns.com/contact",
+  },
+  openGraph: {
+    title: "Contact Built Up Designs — Interior Design Studio Nashik",
+    description:
+      "Get in touch with Built Up Designs. Studio at M.G. Road, Nashik. WhatsApp, call, or email.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function ContactPage() {
@@ -64,7 +73,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CHANNELS */}
+      {/* STUDIO INFO */}
       <section className="w-full" style={{ backgroundColor: "#F2ECE3" }}>
         <div
           className="container-content"
@@ -72,7 +81,7 @@ export default function ContactPage() {
         >
           <div style={{ marginBottom: "40px" }}>
             <SectionLabel style={{ marginBottom: "12px" }}>
-              Choose a Channel
+              Visit the Studio
             </SectionLabel>
             <h2
               style={{
@@ -82,224 +91,214 @@ export default function ContactPage() {
                 color: "#1F1B16",
               }}
             >
-              Three ways to connect.
+              Nashik, Maharashtra
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div
-              style={{
-                backgroundColor: "#F7F3ED",
-                padding: "32px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                minHeight: "280px",
-              }}
-            >
+          <div style={{ backgroundColor: "#F7F3ED", padding: "32px" }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <span
                   style={{
+                    display: "block",
                     fontSize: "10px",
                     textTransform: "uppercase",
                     letterSpacing: "0.24em",
-                    color: "#5C5247",
+                    color: "#8F6633",
+                    fontWeight: 600,
+                    marginBottom: "10px",
                   }}
                 >
-                  Channel 01
+                  Address
                 </span>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-playfair), serif",
-                    fontSize: "24px",
-                    color: "#1F1B16",
-                    marginTop: "12px",
-                    marginBottom: "8px",
-                  }}
-                >
-                  WhatsApp
-                </h3>
                 <p
                   style={{
-                    fontSize: "14px",
-                    color: "#5C5247",
-                    marginBottom: "20px",
+                    fontSize: "15px",
+                    lineHeight: 1.6,
+                    color: "#1F1B16",
                   }}
                 >
-                  Start a conversation directly.
+                  {CONTACT.address.display}
                 </p>
-                <div
+              </div>
+              <div>
+                <span
                   style={{
-                    backgroundColor: "#F2ECE3",
-                    padding: "12px 16px",
-                    marginBottom: "20px",
+                    display: "block",
+                    fontSize: "10px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.24em",
+                    color: "#8F6633",
+                    fontWeight: 600,
+                    marginBottom: "10px",
                   }}
                 >
-                  <span style={{ fontSize: "15px", color: "#1F1B16" }}>
-                    {CONTACT.phoneDisplay}
-                  </span>
-                </div>
+                  Hours
+                </span>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: 1.6,
+                    color: "#1F1B16",
+                  }}
+                >
+                  {CONTACT.hours}
+                </p>
               </div>
-              <a
-                href={getWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
+              <div>
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: "10px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.24em",
+                    color: "#8F6633",
+                    fontWeight: 600,
+                    marginBottom: "10px",
+                  }}
+                >
+                  Contact
+                </span>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: 1.6,
+                    color: "#1F1B16",
+                  }}
+                >
+                  <a
+                    href={`tel:${CONTACT.phone}`}
+                    style={{ color: "#1F1B16", textDecoration: "none" }}
+                  >
+                    {CONTACT.phoneDisplay}
+                  </a>
+                  <br />
+                  <a
+                    href={`mailto:${CONTACT.email}`}
+                    style={{
+                      color: "#1F1B16",
+                      textDecoration: "none",
+                      wordBreak: "break-all",
+                    }}
+                  >
+                    {CONTACT.email}
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CHANNELS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <a
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block",
+                backgroundColor: "#F7F3ED",
+                padding: "32px",
+                textDecoration: "none",
+              }}
+            >
+              <span
                 style={{
-                  fontSize: "11px",
+                  fontSize: "10px",
                   textTransform: "uppercase",
-                  letterSpacing: "0.18em",
-                  color: "#1F1B16",
-                  textDecoration: "none",
-                  borderBottom: "1px solid #8F6633",
-                  paddingBottom: "4px",
-                  width: "fit-content",
+                  letterSpacing: "0.24em",
+                  color: "#5C5247",
                 }}
               >
-                Message on WhatsApp →
-              </a>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: "#F7F3ED",
-                padding: "32px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                minHeight: "280px",
-              }}
-            >
-              <div>
-                <span
-                  style={{
-                    fontSize: "10px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.24em",
-                    color: "#5C5247",
-                  }}
-                >
-                  Channel 02
-                </span>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-playfair), serif",
-                    fontSize: "24px",
-                    color: "#1F1B16",
-                    marginTop: "12px",
-                    marginBottom: "8px",
-                  }}
-                >
-                  Phone
-                </h3>
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "#5C5247",
-                    marginBottom: "20px",
-                  }}
-                >
-                  Speak with the studio.
-                </p>
-                <div
-                  style={{
-                    backgroundColor: "#F2ECE3",
-                    padding: "12px 16px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <span style={{ fontSize: "15px", color: "#1F1B16" }}>
-                    {CONTACT.phoneDisplay}
-                  </span>
-                </div>
-              </div>
-              <a
-                href={getPhoneLink()}
+                Channel 01
+              </span>
+              <h3
                 style={{
-                  fontSize: "11px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.18em",
+                  fontFamily: "var(--font-playfair), serif",
+                  fontSize: "24px",
                   color: "#1F1B16",
-                  textDecoration: "none",
-                  borderBottom: "1px solid #8F6633",
-                  paddingBottom: "4px",
-                  width: "fit-content",
+                  marginTop: "12px",
+                  marginBottom: "8px",
                 }}
               >
-                Call Us →
-              </a>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: "#F7F3ED",
-                padding: "32px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                minHeight: "280px",
-              }}
-            >
-              <div>
-                <span
-                  style={{
-                    fontSize: "10px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.24em",
-                    color: "#5C5247",
-                  }}
-                >
-                  Channel 03
-                </span>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-playfair), serif",
-                    fontSize: "24px",
-                    color: "#1F1B16",
-                    marginTop: "12px",
-                    marginBottom: "8px",
-                  }}
-                >
-                  Instagram
-                </h3>
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "#5C5247",
-                    marginBottom: "20px",
-                  }}
-                >
-                  See our latest work.
-                </p>
-                <div
-                  style={{
-                    backgroundColor: "#F2ECE3",
-                    padding: "12px 16px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <span style={{ fontSize: "15px", color: "#1F1B16" }}>
-                    {CONTACT.instagram}
-                  </span>
-                </div>
-              </div>
-              <a
-                href={CONTACT.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                WhatsApp
+              </h3>
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "#5C5247",
+                  marginBottom: "20px",
+                }}
+              >
+                Start a conversation directly.
+              </p>
+              <span
                 style={{
                   fontSize: "11px",
                   textTransform: "uppercase",
                   letterSpacing: "0.18em",
                   color: "#1F1B16",
-                  textDecoration: "none",
                   borderBottom: "1px solid #8F6633",
                   paddingBottom: "4px",
-                  width: "fit-content",
+                }}
+              >
+                Message Us →
+              </span>
+            </a>
+
+            <a
+              href={CONTACT.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block",
+                backgroundColor: "#F7F3ED",
+                padding: "32px",
+                textDecoration: "none",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "10px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.24em",
+                  color: "#5C5247",
+                }}
+              >
+                Channel 02
+              </span>
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair), serif",
+                  fontSize: "24px",
+                  color: "#1F1B16",
+                  marginTop: "12px",
+                  marginBottom: "8px",
+                }}
+              >
+                Instagram
+              </h3>
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "#5C5247",
+                  marginBottom: "20px",
+                }}
+              >
+                See our latest work.
+              </p>
+              <span
+                style={{
+                  fontSize: "11px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.18em",
+                  color: "#1F1B16",
+                  borderBottom: "1px solid #8F6633",
+                  paddingBottom: "4px",
                 }}
               >
                 View Instagram →
-              </a>
-            </div>
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -333,7 +332,6 @@ export default function ContactPage() {
                 within one working day.
               </p>
             </div>
-
             <div className="lg:col-span-7">
               <div
                 style={{ backgroundColor: "#F2ECE3", padding: "40px 32px" }}

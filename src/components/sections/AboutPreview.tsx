@@ -16,7 +16,7 @@ export function AboutPreview() {
         style={{ paddingTop: "72px", paddingBottom: "72px" }}
       >
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-          {/* IMAGE — 50% */}
+          {/* IMAGE */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export function AboutPreview() {
             </div>
           </motion.div>
 
-          {/* TEXT — 50% */}
+          {/* TEXT */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -119,10 +119,10 @@ export function AboutPreview() {
                 maxWidth: "540px",
               }}
             >
-              Built Up Designs is an interior design studio creating warm,
-              functional homes and workspaces in Nashik and Mumbai. We avoid
-              passing trends, focusing instead on practical layouts, natural
-              materials, and lighting that lasts.
+              Built Up Designs is a Nashik-based interior design studio creating
+              warm, functional homes and workspaces. We avoid passing trends,
+              focusing instead on practical layouts, natural materials, and
+              lighting that lasts.
             </p>
 
             <p
@@ -134,9 +134,9 @@ export function AboutPreview() {
                 maxWidth: "540px",
               }}
             >
-              From private residences to boutique commercial spaces, our studio
-              handles every detail — from spatial planning and joinery design to
-              material selection and site coordination.
+              From private residences in Nashik to boutique commercial spaces,
+              our studio handles every detail — from spatial planning and
+              joinery design to material selection and site coordination.
             </p>
 
             <Link

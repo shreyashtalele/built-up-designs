@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { getWhatsAppLink } from "@/lib/constants";
+import { getWhatsAppLink, SITE } from "@/lib/constants";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -13,7 +13,7 @@ export function Hero() {
     <section className="w-full" style={{ backgroundColor: "#F7F3ED" }}>
       <div
         className="container-content"
-        style={{ paddingTop: "40px", paddingBottom: "72px" }}
+        style={{ paddingTop: "32px", paddingBottom: "64px" }}
       >
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
           {/* TEXT COLUMN */}
@@ -27,7 +27,7 @@ export function Hero() {
                 flexWrap: "wrap",
                 alignItems: "center",
                 gap: "12px",
-                marginBottom: "24px",
+                marginBottom: "12px",
               }}
             >
               <span
@@ -39,7 +39,7 @@ export function Hero() {
                   fontWeight: 600,
                 }}
               >
-                Interior Design Consultancy
+                Built Up Designs
               </span>
               <span
                 style={{
@@ -56,9 +56,24 @@ export function Hero() {
                   color: "rgba(92,82,71,0.7)",
                 }}
               >
-                Nashik · Mumbai
+                Nashik
               </span>
             </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease, delay: 0.2 }}
+              style={{
+                fontFamily: "var(--font-playfair), serif",
+                fontStyle: "italic",
+                fontSize: "15px",
+                color: "#8F6633",
+                marginBottom: "24px",
+              }}
+            >
+              {SITE.tagline}
+            </motion.p>
 
             <h1
               style={{
@@ -90,8 +105,9 @@ export function Hero() {
                 maxWidth: "420px",
               }}
             >
-              Thoughtful interior design shaped around how you live. Warm
-              materials, considered layouts, and calm details.
+              A Nashik-based interior design studio crafting warm, functional
+              homes and workspaces. Thoughtful layouts, natural materials, and
+              calm details.
             </motion.p>
 
             <motion.div
@@ -213,7 +229,7 @@ export function Hero() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85"
-                alt="Warm, thoughtfully designed interior living space"
+                alt="Warm, thoughtfully designed interior living space by Built Up Designs"
                 fill
                 className="object-cover"
                 priority
