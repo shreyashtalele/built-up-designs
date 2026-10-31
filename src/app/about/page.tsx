@@ -174,32 +174,20 @@ export default function AboutPage() {
                 style={{
                   position: "relative",
                   width: "100%",
-                  height: "clamp(320px, 40vw, 500px)",
+                  aspectRatio: "4/5",
+                  maxHeight: "560px",
                   overflow: "hidden",
                   backgroundColor: "#D9CFC0",
                 }}
               >
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "linear-gradient(135deg, #EBE4D8, #D9CFC0)",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "14px",
-                      color: "rgba(92,82,71,0.5)",
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Founder Portrait
-                  </span>
-                </div>
+                <Image
+                  src="/images/founder.webp"
+                  alt="Vaishnavi Mogare — Founder and Interior Designer at Built Up Designs, Nashik"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
