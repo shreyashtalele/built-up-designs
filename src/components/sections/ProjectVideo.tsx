@@ -38,8 +38,8 @@ export function ProjectVideo() {
           className="md:!aspect-[21/9]"
         >
           <Image
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=2000&q=80"
-            alt="Cinematic interior view"
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80"
+            alt="The Vineyard Residence — cinematic interior walkthrough by Built Up Designs, Nashik"
             fill
             className="object-cover"
             style={{ opacity: 0.7 }}

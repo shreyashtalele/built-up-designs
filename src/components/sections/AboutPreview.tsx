@@ -36,7 +36,7 @@ export function AboutPreview() {
               >
                 <Image
                   src="/images/hero/about-image.png"
-                  alt="Warm, refined interior with natural materials"
+                  alt="Refined interior designed by Built Up Designs in Nashik — warm materials and thoughtful lighting"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

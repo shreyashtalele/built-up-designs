@@ -68,8 +68,8 @@ export function SelectedWork() {
               }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1600&q=80"
-                alt="Warm modern residential interior with wood paneling"
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80"
+                alt="The Gangapur Villa — open-format living interior with wood paneling by Built Up Designs, Nashik"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 58vw"
@@ -172,8 +172,8 @@ export function SelectedWork() {
                 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&q=80"
-                  alt="Contemporary apartment interior with soft materials"
+                  src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&q=80"
+                  alt="Bandra Coastal Residence — contemporary apartment interior with soft materials by Built Up Designs"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 42vw"
@@ -253,8 +253,8 @@ export function SelectedWork() {
                 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200&q=80"
-                  alt="Refined living space with warm wood"
+                  src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80"
+                  alt="Oakwood Retreat — refined living suite with warm wood finishes by Built Up Designs, Nashik"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 42vw"

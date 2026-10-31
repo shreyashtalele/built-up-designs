@@ -228,8 +228,8 @@ export function Hero() {
               }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=85"
-                alt="Warm, thoughtfully designed interior living space by Built Up Designs"
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80"
+                alt="Warm modern interior with natural wood finishes, soft textiles, and calm lighting — Built Up Designs, Nashik"
                 fill
                 className="object-cover"
                 priority

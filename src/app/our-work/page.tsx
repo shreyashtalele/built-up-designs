@@ -16,6 +16,7 @@ type VideoProject = {
   tags: string[];
   duration: string;
   videoSrc: string;
+  posterSrc: string;
 };
 
 type PhotoProject = {
@@ -37,6 +38,7 @@ const VIDEO_PROJECTS: VideoProject[] = [
     tags: ["Kitchen & Living", "Custom Millwork", "Bedroom & Study"],
     duration: "00:33",
     videoSrc: "/videos/project-1.mp4",
+    posterSrc: "/images/hero/hero-image.png",
   },
   {
     id: "modern-office-suite",
@@ -48,6 +50,7 @@ const VIDEO_PROJECTS: VideoProject[] = [
     tags: ["Reception Design", "Workspace Interiors", "Custom Millwork"],
     duration: "00:24",
     videoSrc: "/videos/project-2.mp4",
+    posterSrc: "/images/hero/hero-imgae-2.png",
   },
 ];
 
@@ -59,7 +62,7 @@ const PHOTO_PROJECTS: PhotoProject[] = [
     description:
       "A calm home with natural textures, layered lighting, and thoughtful spatial planning.",
     imageSrc:
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1400&q=85",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
   },
   {
     id: "studio-library",
@@ -68,7 +71,7 @@ const PHOTO_PROJECTS: PhotoProject[] = [
     description:
       "Custom millwork, quiet corners, and warm wood finishes for focused everyday living.",
     imageSrc:
-      "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1400&q=85",
+      "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80",
   },
   {
     id: "kitchen-living",
@@ -77,7 +80,7 @@ const PHOTO_PROJECTS: PhotoProject[] = [
     description:
       "An open plan with warm wood finishes, marble surfaces, and soft ambient light.",
     imageSrc:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=85",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
   },
 ];
 
