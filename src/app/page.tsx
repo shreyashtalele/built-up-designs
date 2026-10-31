@@ -17,6 +17,30 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://buildupdesigns.com",
   },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://built-up-designs.vercel.app",
+    siteName: "Built Up Designs",
+    title: "Built Up Designs | Interior Design Studio in Nashik",
+    description:
+      "Nashik-based interior design studio creating warm, functional homes and workspaces.",
+    images: [
+      {
+        url: "https://built-up-designs.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Built Up Designs — Interior Design Studio in Nashik",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Built Up Designs | Interior Design Studio in Nashik",
+    description:
+      "Nashik-based interior design studio creating warm, functional homes and workspaces.",
+    images: ["https://built-up-designs.vercel.app/og-image.png"],
+  },
 };
 
 export default function HomePage() {
