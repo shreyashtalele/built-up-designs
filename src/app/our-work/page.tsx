@@ -1,7 +1,7 @@
 // src/app/our-work/page.tsx
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -38,7 +38,7 @@ const VIDEO_PROJECTS: VideoProject[] = [
     tags: ["Kitchen & Living", "Custom Millwork", "Bedroom & Study"],
     duration: "00:33",
     videoSrc: "/videos/project-1.mp4",
-    posterSrc: "/images/hero/hero-image.png",
+    posterSrc: "/images/hero/hero-image.webp",
   },
   {
     id: "modern-office-suite",
@@ -50,7 +50,7 @@ const VIDEO_PROJECTS: VideoProject[] = [
     tags: ["Reception Design", "Workspace Interiors", "Custom Millwork"],
     duration: "00:24",
     videoSrc: "/videos/project-2.mp4",
-    posterSrc: "/images/hero/hero-imgae-2.png",
+    posterSrc: "/images/hero/hero-imgae-2.webp",
   },
 ];
 
@@ -84,17 +84,9 @@ const PHOTO_PROJECTS: PhotoProject[] = [
   },
 ];
 
-// Video card with blurred background + centered vertical video
-function VideoCard({
-  project,
-  onClick,
-}: {
-  project: VideoProject;
-  onClick: () => void;
-}) {
+function VideoCard({ project }: { project: VideoProject }) {
   const backgroundVideoRef = useRef<HTMLVideoElement>(null);
   const foregroundVideoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
   const [videoDuration, setVideoDuration] = useState<string>(project.duration);
 
   const handleMouseEnter = () => {
@@ -104,7 +96,6 @@ function VideoCard({
     if (foregroundVideoRef.current) {
       foregroundVideoRef.current.play().catch(() => {});
     }
-    setPlaying(true);
   };
 
   const handleMouseLeave = () => {
@@ -116,10 +107,8 @@ function VideoCard({
       foregroundVideoRef.current.pause();
       foregroundVideoRef.current.currentTime = 0;
     }
-    setPlaying(false);
   };
 
-  // Get real duration from video metadata
   const handleLoadedMetadata = () => {
     if (foregroundVideoRef.current) {
       const seconds = Math.round(foregroundVideoRef.current.duration);
@@ -146,7 +135,6 @@ function VideoCard({
         width: "100%",
       }}
     >
-      {/* Video preview area */}
       <div
         style={{
           position: "relative",
@@ -156,7 +144,6 @@ function VideoCard({
           backgroundColor: "#1F1B16",
         }}
       >
-        {/* Blurred background video */}
         <video
           ref={backgroundVideoRef}
           src={project.videoSrc}
@@ -176,7 +163,6 @@ function VideoCard({
           }}
         />
 
-        {/* Dark overlay */}
         <div
           style={{
             position: "absolute",
@@ -186,7 +172,6 @@ function VideoCard({
           }}
         />
 
-        {/* Centered vertical video WITH CONTROLS */}
         <div
           style={{
             position: "absolute",
@@ -225,7 +210,6 @@ function VideoCard({
           </div>
         </div>
 
-        {/* Category badge top-left — pointer-events none */}
         <div
           style={{
             position: "absolute",
@@ -244,7 +228,6 @@ function VideoCard({
           {project.category}
         </div>
 
-        {/* Duration badge top-right — pointer-events none */}
         <div
           style={{
             position: "absolute",
@@ -264,7 +247,6 @@ function VideoCard({
         </div>
       </div>
 
-      {/* Info below — NOT clickable (no onClick to modal) */}
       <div style={{ padding: "24px" }}>
         <h3
           style={{
@@ -310,8 +292,6 @@ function VideoCard({
 }
 
 export default function OurWorkPage() {
-  const [activeVideo, setActiveVideo] = useState<VideoProject | null>(null);
-
   return (
     <>
       {/* HERO */}
@@ -391,11 +371,7 @@ export default function OurWorkPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {VIDEO_PROJECTS.map((project) => (
-              <VideoCard
-                key={project.id}
-                project={project}
-                onClick={() => setActiveVideo(project)}
-              />
+              <VideoCard key={project.id} project={project} />
             ))}
           </div>
         </div>
@@ -450,6 +426,7 @@ export default function OurWorkPage() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
                   />
                 </div>
                 <div style={{ padding: "24px" }}>
@@ -585,102 +562,6 @@ export default function OurWorkPage() {
           </div>
         </div>
       </section>
-
-      {/* MODAL — full video player */}
-      {activeVideo && (
-        <div
-          onClick={() => setActiveVideo(null)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(31,27,22,0.95)",
-            zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "24px",
-            overflowY: "auto",
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => setActiveVideo(null)}
-            aria-label="Close video"
-            style={{
-              position: "fixed",
-              top: "24px",
-              right: "24px",
-              width: "48px",
-              height: "48px",
-              borderRadius: "9999px",
-              backgroundColor: "rgba(247,243,237,0.15)",
-              color: "#F7F3ED",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "24px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 10000,
-            }}
-          >
-            ×
-          </button>
-
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{ width: "100%", maxWidth: "500px" }}
-          >
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                aspectRatio: "9/16",
-                backgroundColor: "#000",
-                borderRadius: "4px",
-                overflow: "hidden",
-              }}
-            >
-              <video
-                src={activeVideo.videoSrc}
-                controls
-                autoPlay
-                playsInline
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              >
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div
-              style={{
-                marginTop: "20px",
-                color: "#F7F3ED",
-                textAlign: "center",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "var(--font-playfair), serif",
-                  fontSize: "20px",
-                  lineHeight: 1.2,
-                  marginBottom: "8px",
-                }}
-              >
-                {activeVideo.title}
-              </h3>
-              <p
-                style={{
-                  fontSize: "13px",
-                  lineHeight: 1.6,
-                  color: "rgba(247,243,237,0.7)",
-                }}
-              >
-                {activeVideo.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

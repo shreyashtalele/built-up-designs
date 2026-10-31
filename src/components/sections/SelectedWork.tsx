@@ -69,10 +69,11 @@ export function SelectedWork() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80"
-                alt="The Gangapur Villa — open-format living interior with wood paneling by Built Up Designs, Nashik"
+                alt="Warm modern living interior with wood paneling and natural light by Built Up Designs, Nashik"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 58vw"
+                loading="lazy"
               />
             </div>
             <div style={{ padding: "32px" }}>
@@ -103,7 +104,7 @@ export function SelectedWork() {
                     color: "rgba(92,82,71,0.7)",
                   }}
                 >
-                  2024
+                  2025
                 </span>
               </div>
               <h3
@@ -115,7 +116,7 @@ export function SelectedWork() {
                   marginBottom: "12px",
                 }}
               >
-                The Gangapur Villa
+                The Warm Contemporary Residence
               </h3>
               <p
                 style={{
@@ -126,8 +127,8 @@ export function SelectedWork() {
                   maxWidth: "520px",
                 }}
               >
-                An open-format interior with Italian marble counters, fluted
-                timber accents, and warm architectural lighting.
+                A modern home blending warm wood finishes, marble-look surfaces,
+                and soft ambient lighting.
               </p>
               <div
                 style={{
@@ -140,9 +141,9 @@ export function SelectedWork() {
                   color: "#1F1B16",
                 }}
               >
-                <span>3,850 SQ. FT.</span>
+                <span>RESIDENTIAL</span>
                 <span style={{ color: "#8F6633" }}>·</span>
-                <span>Nashik</span>
+                <span>NASHIK</span>
               </div>
             </div>
           </Link>
@@ -172,11 +173,12 @@ export function SelectedWork() {
                 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&q=80"
-                  alt="Bandra Coastal Residence — contemporary apartment interior with soft materials by Built Up Designs"
+                  src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80"
+                  alt="Modern office interior with warm wood accents and clean lines by Built Up Designs, Nashik"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 42vw"
+                  loading="lazy"
                 />
               </div>
               <div style={{ padding: "24px" }}>
@@ -197,7 +199,7 @@ export function SelectedWork() {
                       fontWeight: 600,
                     }}
                   >
-                    Bandra Residence
+                    Commercial
                   </span>
                   <span
                     style={{
@@ -207,7 +209,7 @@ export function SelectedWork() {
                       color: "rgba(92,82,71,0.7)",
                     }}
                   >
-                    Mumbai
+                    2025
                   </span>
                 </div>
                 <h4
@@ -219,7 +221,7 @@ export function SelectedWork() {
                     marginBottom: "8px",
                   }}
                 >
-                  Modern Sea-Facing Apartment
+                  The Modern Office Suite
                 </h4>
                 <p
                   style={{
@@ -228,7 +230,8 @@ export function SelectedWork() {
                     color: "#5C5247",
                   }}
                 >
-                  Bouclé seating, walnut fluting, and travertine stonework.
+                  Refined workspace with warm wood, marble-textured walls, and
+                  layered lighting.
                 </p>
               </div>
             </Link>
@@ -253,11 +256,12 @@ export function SelectedWork() {
                 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80"
-                  alt="Oakwood Retreat — refined living suite with warm wood finishes by Built Up Designs, Nashik"
+                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80"
+                  alt="Warm interior living space with natural materials by Built Up Designs, Nashik"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 42vw"
+                  loading="lazy"
                 />
               </div>
               <div style={{ padding: "24px" }}>
@@ -278,7 +282,7 @@ export function SelectedWork() {
                       fontWeight: 600,
                     }}
                   >
-                    Oakwood Retreat
+                    Residential
                   </span>
                   <span
                     style={{
@@ -288,7 +292,7 @@ export function SelectedWork() {
                       color: "rgba(92,82,71,0.7)",
                     }}
                   >
-                    Nashik
+                    2025
                   </span>
                 </div>
                 <h4
@@ -300,7 +304,7 @@ export function SelectedWork() {
                     marginBottom: "8px",
                   }}
                 >
-                  Living Suite &amp; Library
+                  The Warm Modern Apartment
                 </h4>
                 <p
                   style={{
@@ -309,7 +313,8 @@ export function SelectedWork() {
                     color: "#5C5247",
                   }}
                 >
-                  Sculptural millwork, sheer linen, and muted plaster finishes.
+                  A calm home with natural textures, layered lighting, and
+                  thoughtful spatial planning.
                 </p>
               </div>
             </Link>

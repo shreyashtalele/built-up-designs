@@ -35,11 +35,12 @@ export function AboutPreview() {
                 }}
               >
                 <Image
-                  src="/images/hero/about-image.png"
+                  src="/images/hero/about-image.webp"
                   alt="Refined interior designed by Built Up Designs in Nashik — warm materials and thoughtful lighting"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                 />
               </div>
 

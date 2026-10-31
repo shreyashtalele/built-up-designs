@@ -8,33 +8,28 @@ const STORAGE_KEY = "bud_wa_popup_dismissed";
 
 export function WhatsAppPopup() {
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
-    console.log("[WhatsAppPopup] Mounted, setting timer");
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
     if (typeof window !== "undefined") {
       const dismissed = sessionStorage.getItem(STORAGE_KEY);
-      console.log("[WhatsAppPopup] Session storage:", dismissed);
       if (dismissed === "true") {
-        console.log("[WhatsAppPopup] Dismissed — not showing");
+        window.removeEventListener("resize", checkMobile);
         return;
       }
     }
 
-    const timer = setTimeout(() => {
-      console.log("[WhatsAppPopup] Timer fired, setting visible=true");
-      setVisible(true);
-    }, 3000);
+    const timer = setTimeout(() => setVisible(true), 10000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
-
-  console.log("[WhatsAppPopup] Render — visible:", visible);
-
-  if (!visible) {
-    console.log("[WhatsAppPopup] Not visible — returning null");
-    return null;
-  }
 
   const handleClose = () => {
     setVisible(false);
@@ -42,6 +37,8 @@ export function WhatsAppPopup() {
       sessionStorage.setItem(STORAGE_KEY, "true");
     }
   };
+
+  if (isMobile || !visible) return null;
 
   return (
     <div
@@ -58,8 +55,6 @@ export function WhatsAppPopup() {
         padding: "22px",
         colorScheme: "light",
         display: "block",
-        visibility: "visible",
-        opacity: 1,
       }}
     >
       <button
@@ -78,6 +73,9 @@ export function WhatsAppPopup() {
           fontSize: "18px",
           color: "#8F6633",
           lineHeight: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         ×

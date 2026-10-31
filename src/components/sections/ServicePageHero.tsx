@@ -62,7 +62,7 @@ export function ServicePageHero() {
         >
           <div className="aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
             <Image
-              src="/images/hero/hero-imgae-2.png"
+              src="/images/hero/hero-imgae-2.webp"
               alt="Panoramic interior view showcasing spatial clarity"
               width={2000}
               height={900}

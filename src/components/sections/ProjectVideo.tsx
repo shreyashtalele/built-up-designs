@@ -44,6 +44,7 @@ export function ProjectVideo() {
             className="object-cover"
             style={{ opacity: 0.7 }}
             sizes="100vw"
+            loading="lazy"
           />
 
           <div
