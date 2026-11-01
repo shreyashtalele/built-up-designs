@@ -193,8 +193,9 @@ export default function AboutPage() {
                 Her passion for design, creative approach, and attention to
                 detail drive every project. Specializing in residential and
                 commercial interiors, she believes in understanding each
-                client's vision and transforming it into thoughtfully designed
-                spaces through personalized solutions and dedicated guidance.
+                client&apos;s vision and transforming it into thoughtfully
+                designed spaces through personalized solutions and dedicated
+                guidance.
               </p>
             </div>
           </div>
