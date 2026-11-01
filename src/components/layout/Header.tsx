@@ -53,34 +53,64 @@ export function Header() {
       }}
     >
       <div className="container-content">
-        <div className="h-16 md:h-[72px] flex items-center justify-between gap-4">
-          {/* LOGO — larger now */}
+        <div className="h-20 md:h-[88px] lg:h-[92px] flex items-center justify-between gap-4">
+          {/* LEFT — Logo + Brand Name */}
           <Link
             href="/"
             aria-label="Built Up Designs — Home"
-            className="flex items-center shrink-0"
+            className="flex items-center gap-3 md:gap-4 shrink-0"
           >
+            {/* Logo image only — no text embedded */}
             <div
               style={{
                 position: "relative",
-                width: "52px",
-                height: "52px",
+                width: "56px",
+                height: "56px",
               }}
-              className="md:!w-[64px] md:!h-[64px]"
+              className="md:!w-[68px] md:!h-[68px]"
             >
               <Image
                 src="/images/logo/logo-main.svg"
-                alt="Built Up Designs"
+                alt="Built Up Designs logo"
                 fill
                 className="object-contain"
                 priority
               />
             </div>
+
+            {/* Brand text — bigger now */}
+            <div className="flex flex-col leading-tight">
+              <span
+                style={{
+                  fontFamily: "var(--font-playfair), serif",
+                  fontSize: "22px",
+                  lineHeight: 1.1,
+                  color: "#1F1B16",
+                }}
+                className="md:!text-[24px] lg:!text-[26px]"
+              >
+                Built Up Designs
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-playfair), serif",
+                  fontStyle: "italic",
+                  fontSize: "12px",
+                  color: "#8F6633",
+                  marginTop: "3px",
+                  letterSpacing: "0.02em",
+                  whiteSpace: "nowrap",
+                }}
+                className="md:!text-[13px]"
+              >
+                Aligning space, Elevating lives
+              </span>
+            </div>
           </Link>
 
-          {/* DESKTOP NAV */}
+          {/* RIGHT — Nav (shifted right) */}
           <nav
-            className="hidden lg:flex items-center gap-7"
+            className="hidden lg:flex items-center gap-7 xl:gap-9"
             aria-label="Main navigation"
           >
             {NAV_LINKS.map((link) => {
@@ -118,75 +148,53 @@ export function Header() {
             })}
           </nav>
 
-          {/* RIGHT SIDE */}
-          <div className="flex items-center gap-3 shrink-0">
-            {/* CTA — desktop only */}
-            <Link
-              href="/contact"
-              className="hidden lg:inline-flex items-center justify-center"
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="lg:hidden flex flex-col justify-center items-center w-10 h-10"
+            style={{
+              gap: "5px",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              padding: 0,
+            }}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+          >
+            <span
               style={{
+                width: "22px",
+                height: "1.5px",
                 backgroundColor: "#1F1B16",
-                color: "#F7F3ED",
-                fontSize: "11px",
-                textTransform: "uppercase",
-                letterSpacing: "0.16em",
-                fontWeight: 500,
-                padding: "10px 20px",
-                whiteSpace: "nowrap",
-                textDecoration: "none",
+                transition: "transform 0.3s, opacity 0.3s",
+                transform: mobileOpen
+                  ? "rotate(45deg) translateY(6.5px)"
+                  : "none",
               }}
-            >
-              Get a Consultation
-            </Link>
-
-            {/* HAMBURGER */}
-            <button
-              type="button"
-              onClick={() => setMobileOpen((prev) => !prev)}
-              className="lg:hidden flex flex-col justify-center items-center w-10 h-10"
+            />
+            <span
               style={{
-                gap: "5px",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
+                width: "22px",
+                height: "1.5px",
+                backgroundColor: "#1F1B16",
+                transition: "transform 0.3s, opacity 0.3s",
+                opacity: mobileOpen ? 0 : 1,
               }}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-            >
-              <span
-                style={{
-                  width: "22px",
-                  height: "1.5px",
-                  backgroundColor: "#1F1B16",
-                  transition: "transform 0.3s, opacity 0.3s",
-                  transform: mobileOpen
-                    ? "rotate(45deg) translateY(6.5px)"
-                    : "none",
-                }}
-              />
-              <span
-                style={{
-                  width: "22px",
-                  height: "1.5px",
-                  backgroundColor: "#1F1B16",
-                  transition: "transform 0.3s, opacity 0.3s",
-                  opacity: mobileOpen ? 0 : 1,
-                }}
-              />
-              <span
-                style={{
-                  width: "22px",
-                  height: "1.5px",
-                  backgroundColor: "#1F1B16",
-                  transition: "transform 0.3s, opacity 0.3s",
-                  transform: mobileOpen
-                    ? "rotate(-45deg) translateY(-6.5px)"
-                    : "none",
-                }}
-              />
-            </button>
-          </div>
+            />
+            <span
+              style={{
+                width: "22px",
+                height: "1.5px",
+                backgroundColor: "#1F1B16",
+                transition: "transform 0.3s, opacity 0.3s",
+                transform: mobileOpen
+                  ? "rotate(-45deg) translateY(-6.5px)"
+                  : "none",
+              }}
+            />
+          </button>
         </div>
       </div>
 

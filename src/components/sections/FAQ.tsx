@@ -7,27 +7,23 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 const FAQS = [
   {
     q: "Do you work on residential and commercial projects?",
-    a: "Yes. We design both residential interiors (homes, villas, apartments) and commercial spaces (offices, retail, hospitality) across Nashik.",
+    a: "Yes. We design both residential interiors and commercial spaces across Nashik.",
   },
   {
     q: "How long does an interior design project take?",
-    a: "Most residential projects take 6–12 weeks, depending on the scale, scope, and site conditions. Commercial projects may vary. We share a clear timeline after the first site visit.",
+    a: "Most residential interior projects typically take 6–12 months, depending on the project size, design requirements, scope of work, and site conditions. Commercial project timelines may vary. We provide an estimated project timeline after understanding your requirements and site visit.",
   },
   {
-    q: "What areas of Nashik do you serve?",
-    a: "We serve all major areas of Nashik, including Gangapur Road, College Road, Panchavati, Nashik Road, Indira Nagar, Cidco, Satpur, Ambad, Deolali, and surrounding regions.",
-  },
-  {
-    q: "Do you provide 3D designs and material samples?",
-    a: "Yes. Our design process includes detailed 3D visualizations, material palettes, and physical samples so you can see and feel the design before execution.",
+    q: "Do you provide 3D designs and mood boards?",
+    a: "Yes. Our design process includes detailed 3D visualizations, thoughtfully curated mood boards, and material palettes to help you visualize the overall design, colours, textures, and finishes before execution begins.",
   },
   {
     q: "How much does interior design cost?",
-    a: "Cost depends on the scope — the size of the space, the materials used, and the level of customization. We offer a free consultation to understand your requirements and provide a transparent quote.",
+    a: "The cost depends on the size of the space, project requirements, design scope, material selection, and level of customization. At Built Up Designs, we offer a complimentary first site visit to understand your requirements, discuss your vision, and provide a transparent, customized quotation.",
   },
   {
     q: "Do you handle execution or only design?",
-    a: "We handle end-to-end interior design — from concept and detailed drawings to vendor coordination, site supervision, and final handover.",
+    a: "At Built Up Designs, we specialize in complete interior design consultation, from concept development and detailed drawings to material selection and site coordination. While execution is handled by contractors or the client, we provide professional guidance and regular site visits to ensure the work aligns with the approved design.",
   },
 ];
 
@@ -46,13 +42,13 @@ export function FAQ() {
       >
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <div style={{ marginBottom: "40px" }}>
-            <SectionLabel style={{ marginBottom: "12px" }}>
+            <SectionLabel style={{ marginBottom: "16px" }}>
               Common Questions
             </SectionLabel>
             <h2
               style={{
                 fontFamily: "var(--font-playfair), serif",
-                fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
                 lineHeight: 1.1,
                 letterSpacing: "-0.015em",
                 color: "#1F1B16",
@@ -80,7 +76,7 @@ export function FAQ() {
                       justifyContent: "space-between",
                       alignItems: "center",
                       width: "100%",
-                      padding: "22px 0",
+                      padding: "24px 0",
                       backgroundColor: "transparent",
                       border: "none",
                       textAlign: "left",
@@ -91,7 +87,7 @@ export function FAQ() {
                   >
                     <span
                       style={{
-                        fontSize: "16px",
+                        fontSize: "17px",
                         lineHeight: 1.4,
                         color: "#1F1B16",
                         fontFamily: "var(--font-playfair), serif",
@@ -101,7 +97,7 @@ export function FAQ() {
                     </span>
                     <span
                       style={{
-                        fontSize: "22px",
+                        fontSize: "24px",
                         color: "#8F6633",
                         transform: isOpen ? "rotate(45deg)" : "rotate(0)",
                         transition: "transform 0.3s",
@@ -114,7 +110,7 @@ export function FAQ() {
                   </button>
                   <div
                     style={{
-                      maxHeight: isOpen ? "400px" : "0",
+                      maxHeight: isOpen ? "500px" : "0",
                       overflow: "hidden",
                       transition: "max-height 0.4s ease-out",
                     }}
@@ -124,7 +120,7 @@ export function FAQ() {
                         fontSize: "15px",
                         lineHeight: 1.7,
                         color: "#5C5247",
-                        paddingBottom: "22px",
+                        paddingBottom: "24px",
                         paddingRight: "40px",
                       }}
                     >

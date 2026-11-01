@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "Aligning space, Elevating lives",
   description:
     "Built Up Designs is a Nashik-based interior design studio creating warm, functional homes and workspaces.",
-  url: "https://buildupdesigns.com",
+  url: "https://builtupdesigns.com",
 } as const;
 
 export const CONTACT = {
@@ -17,12 +17,13 @@ export const CONTACT = {
   instagramUrl: "https://instagram.com/built_up_designs",
   hours: "Mon — Sat // 10:00 - 19:00 IST",
   address: {
-    street: "M.G. Road",
+    street: "Gala No. 2, Ground Floor, Hansa Laxmi, Fawade Lane, M.G. Road",
     city: "Nashik",
     state: "Maharashtra",
-    pincode: "",
+    pincode: "422001",
     country: "India",
-    display: "M.G. Road, Nashik, Maharashtra",
+    display:
+      "Gala No. 2, Ground Floor, Hansa Laxmi, Fawade Lane, M.G. Road, Nashik - 422001",
   },
 } as const;
 

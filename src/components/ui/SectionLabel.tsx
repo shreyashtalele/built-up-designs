@@ -17,24 +17,29 @@ export function SectionLabel({
         display: "inline-flex",
         alignItems: "center",
         gap: "10px",
+        flexDirection: "row",
+        whiteSpace: "nowrap",
         ...style,
       }}
     >
       <span
         style={{
-          width: "4px",
-          height: "4px",
-          backgroundColor: "#8F6633",
           display: "inline-block",
+          width: "6px",
+          height: "6px",
+          backgroundColor: "#8F6633",
+          flexShrink: 0,
         }}
       />
       <span
         style={{
-          fontSize: "10px",
+          display: "inline-block",
+          fontSize: "13px",
           textTransform: "uppercase",
-          letterSpacing: "0.24em",
+          letterSpacing: "0.22em",
           color: "#8F6633",
           fontWeight: 600,
+          lineHeight: 1.4,
         }}
       >
         {children}

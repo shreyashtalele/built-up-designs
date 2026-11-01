@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { getWhatsAppLink, SITE } from "@/lib/constants";
+import { getWhatsAppLink } from "@/lib/constants";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -13,7 +13,7 @@ export function Hero() {
     <section className="w-full" style={{ backgroundColor: "#F7F3ED" }}>
       <div
         className="container-content"
-        style={{ paddingTop: "32px", paddingBottom: "64px" }}
+        style={{ paddingTop: "40px", paddingBottom: "64px" }}
       >
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
           {/* TEXT COLUMN */}
@@ -27,12 +27,12 @@ export function Hero() {
                 flexWrap: "wrap",
                 alignItems: "center",
                 gap: "12px",
-                marginBottom: "12px",
+                marginBottom: "28px",
               }}
             >
               <span
                 style={{
-                  fontSize: "11px",
+                  fontSize: "12px",
                   letterSpacing: "0.22em",
                   textTransform: "uppercase",
                   color: "#8F6633",
@@ -50,7 +50,7 @@ export function Hero() {
               />
               <span
                 style={{
-                  fontSize: "11px",
+                  fontSize: "12px",
                   letterSpacing: "0.22em",
                   textTransform: "uppercase",
                   color: "rgba(92,82,71,0.7)",
@@ -60,21 +60,6 @@ export function Hero() {
               </span>
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease, delay: 0.2 }}
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontStyle: "italic",
-                fontSize: "15px",
-                color: "#8F6633",
-                marginBottom: "24px",
-              }}
-            >
-              {SITE.tagline}
-            </motion.p>
-
             <h1
               style={{
                 fontFamily: "var(--font-playfair), serif",
@@ -82,7 +67,7 @@ export function Hero() {
                 lineHeight: 1.05,
                 letterSpacing: "-0.02em",
                 color: "#1F1B16",
-                marginBottom: "24px",
+                marginBottom: "28px",
                 fontWeight: 400,
               }}
             >
@@ -101,13 +86,15 @@ export function Hero() {
                 fontSize: "16px",
                 lineHeight: 1.7,
                 color: "#5C5247",
-                marginBottom: "28px",
-                maxWidth: "420px",
+                marginBottom: "32px",
+                maxWidth: "460px",
               }}
             >
-              A Nashik-based interior design studio crafting warm, functional
-              homes and workspaces. Thoughtful layouts, natural materials, and
-              calm details.
+              Built Up Designs is an interior design studio offering creative
+              and functional design solutions for residential and commercial
+              spaces. From space planning to design consultation and project
+              guidance, we bring your vision to life with thoughtful details and
+              personalized designs.
             </motion.p>
 
             <motion.div
@@ -119,7 +106,6 @@ export function Hero() {
                 flexWrap: "wrap",
                 alignItems: "center",
                 gap: "20px",
-                marginBottom: "36px",
               }}
             >
               <Button href="/our-work" variant="primary" size="md">
@@ -152,64 +138,6 @@ export function Hero() {
                 </span>
                 <span>→</span>
               </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.9, ease, delay: 0.85 }}
-              style={{
-                paddingTop: "24px",
-                borderTop: "1px solid rgba(217,207,192,0.6)",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "24px",
-              }}
-            >
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
-                <span
-                  style={{
-                    width: "4px",
-                    height: "4px",
-                    borderRadius: "9999px",
-                    backgroundColor: "#8F6633",
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: "10px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.2em",
-                    color: "#5C5247",
-                  }}
-                >
-                  Nashik Studio
-                </span>
-              </div>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
-                <span
-                  style={{
-                    width: "4px",
-                    height: "4px",
-                    borderRadius: "9999px",
-                    backgroundColor: "#8F6633",
-                  }}
-                />
-                <span
-                  style={{
-                    fontSize: "10px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.2em",
-                    color: "#5C5247",
-                  }}
-                >
-                  Residential · Commercial
-                </span>
-              </div>
             </motion.div>
           </div>
 
@@ -266,41 +194,6 @@ export function Hero() {
                 }}
               >
                 01
-              </div>
-
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "16px",
-                  left: "16px",
-                  backgroundColor: "rgba(247,243,237,0.95)",
-                  backdropFilter: "blur(8px)",
-                  padding: "12px 16px",
-                  border: "1px solid rgba(217,207,192,0.5)",
-                }}
-              >
-                <span
-                  style={{
-                    display: "block",
-                    fontSize: "9px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.22em",
-                    color: "#8F6633",
-                    marginBottom: "2px",
-                  }}
-                >
-                  Recent Commission
-                </span>
-                <span
-                  style={{
-                    display: "block",
-                    fontFamily: "var(--font-playfair), serif",
-                    fontSize: "15px",
-                    color: "#1F1B16",
-                  }}
-                >
-                  Private Residence
-                </span>
               </div>
             </motion.div>
           </div>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Meet Vaishnavi Mogare, founder of Built Up Designs — a Nashik-based interior design studio creating thoughtful residential and commercial spaces.",
   alternates: {
-    canonical: "https://buildupdesigns.com/about",
+    canonical: "https://builtupdesigns.com/about",
   },
   openGraph: {
     title: "About Built Up Designs — Interior Designer in Nashik",
@@ -115,14 +115,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOUNDER */}
+      {/* FOUNDER — Photo LEFT, Text RIGHT */}
       <section className="w-full" style={{ backgroundColor: "#F2ECE3" }}>
         <div
           className="container-content"
           style={{ paddingTop: "72px", paddingBottom: "72px" }}
         >
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            <div className="w-full lg:w-1/2 order-2 lg:order-1">
+            {/* LEFT — Founder Photo (moved from right) */}
+            <div className="w-full lg:w-1/2">
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "4/5",
+                  maxHeight: "560px",
+                  overflow: "hidden",
+                  backgroundColor: "#D9CFC0",
+                }}
+              >
+                <Image
+                  src="/images/founder.webp"
+                  alt="Vaishnavi Mogare — Founder and Interior Designer at Built Up Designs, Nashik"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* RIGHT — Founder Text (moved from left) */}
+            <div className="w-full lg:w-1/2">
               <SectionLabel style={{ marginBottom: "20px" }}>
                 Founder
               </SectionLabel>
@@ -168,27 +192,6 @@ export default function AboutPage() {
                 Her studio handles residential and commercial interiors across
                 Nashik — from the first site visit to the final handover.
               </p>
-            </div>
-            <div className="w-full lg:w-1/2 order-1 lg:order-2">
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  aspectRatio: "4/5",
-                  maxHeight: "560px",
-                  overflow: "hidden",
-                  backgroundColor: "#D9CFC0",
-                }}
-              >
-                <Image
-                  src="/images/founder.webp"
-                  alt="Vaishnavi Mogare — Founder and Interior Designer at Built Up Designs, Nashik"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  loading="lazy"
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -268,7 +271,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* STUDIO — Nashik only, no Mumbai */}
+      {/* STUDIO — Nashik only */}
       <section className="w-full" style={{ backgroundColor: "#F2ECE3" }}>
         <div
           className="container-content"

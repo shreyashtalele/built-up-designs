@@ -28,7 +28,7 @@ export default function NotFound() {
 
           <div className="mt-16 pt-8 w-full border-t border-surface-container-highest">
             <p className="font-body text-label-sm uppercase tracking-widest text-outline">
-              Built Up Designs · Nashik · Mumbai
+              Built Up Designs
             </p>
           </div>
         </div>

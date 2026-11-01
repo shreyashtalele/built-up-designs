@@ -9,15 +9,23 @@ import { FAQ } from "@/components/sections/FAQ";
 export const metadata: Metadata = {
   title: "Interior Design Services in Nashik",
   description:
-    "Residential interior design, commercial interiors, and design consultation services in Nashik by Built Up Designs. Explore our interior design solutions.",
+    "Residential interior design, commercial interiors, and design consultation services in Nashik by Built Up Designs.",
   alternates: {
-    canonical: "https://buildupdesigns.com/services",
+    canonical: "https://builtupdesigns.com/services",
   },
   openGraph: {
+    url: "https://builtupdesigns.com/services",
     title: "Interior Design Services in Nashik | Built Up Designs",
     description:
-      "Residential, commercial, and design consultation services in Nashik by Built Up Designs.",
-    images: ["/og-image.png"],
+      "Residential and commercial interior design services in Nashik by Built Up Designs.",
+    images: [
+      {
+        url: "https://builtupdesigns.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Built Up Designs — Services",
+      },
+    ],
   },
 };
 
@@ -27,7 +35,7 @@ const SERVICES = [
     title: "Residential Interiors",
     subtitle: "Private Residences",
     description:
-      "Personalised interior design for homes that reflect your lifestyle and comfort. From sweeping estates in Nashik to high-rise penthouses across Mumbai, we create serene private sanctuaries.",
+      "Creating beautiful, functional homes that reflect your personality and lifestyle. From space planning and 3D visualization to furniture detailing and material selection, we design spaces that feel uniquely yours.",
     capabilities: [
       "Bespoke villas & penthouses",
       "Full-scope spatial planning",
@@ -35,7 +43,7 @@ const SERVICES = [
       "Material & lighting curation",
     ],
     image:
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1400&q=85",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80",
   },
   {
     number: "02",
@@ -50,77 +58,61 @@ const SERVICES = [
       "Brand-aligned material palette",
     ],
     image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85",
-  },
-  {
-    number: "03",
-    title: "Interior Design Consultation",
-    subtitle: "Spatial Advisory",
-    description:
-      "Expert guidance to help you make the right design decisions. Ideal for clients requiring targeted architectural review, finish palettes, or pre-construction assessment.",
-    capabilities: [
-      "Spatial & layout audits",
-      "Finishes & tactile palettes",
-      "Architectural lighting strategy",
-      "Contractor & execution plans",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1400&q=85",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
   },
 ];
 
 export default function ServicesPage() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO — tight spacing below */}
       <section className="w-full" style={{ backgroundColor: "#F7F3ED" }}>
         <div
           className="container-content"
-          style={{ paddingTop: "32px", paddingBottom: "48px" }}
+          style={{ paddingTop: "40px", paddingBottom: "16px" }}
         >
-          <div style={{ maxWidth: "900px" }}>
-            <SectionLabel style={{ marginBottom: "20px" }}>
-              Our Services · Nashik · Mumbai
-            </SectionLabel>
-            <h1
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontSize: "clamp(2rem, 4.5vw, 4rem)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.02em",
-                color: "#1F1B16",
-                marginBottom: "24px",
-              }}
-            >
-              Designing spaces around your needs.
-            </h1>
-            <p
-              style={{
-                fontSize: "17px",
-                lineHeight: 1.7,
-                color: "#5C5247",
-                maxWidth: "640px",
-              }}
-            >
-              Interior design consultation and solutions tailored to your space,
-              requirements and lifestyle.
-            </p>
-          </div>
+          <SectionLabel style={{ marginBottom: "16px" }}>
+            Our Services
+          </SectionLabel>
+          <h1
+            style={{
+              fontFamily: "var(--font-playfair), serif",
+              fontSize: "clamp(2rem, 4.5vw, 4rem)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.02em",
+              color: "#1F1B16",
+              marginBottom: "20px",
+              maxWidth: "900px",
+            }}
+          >
+            Designing spaces around your needs.
+          </h1>
+          <p
+            style={{
+              fontSize: "17px",
+              lineHeight: 1.7,
+              color: "#5C5247",
+              maxWidth: "700px",
+            }}
+          >
+            Interior design consultation and solutions tailored to your space,
+            requirements and lifestyle.
+          </p>
         </div>
       </section>
 
-      {/* SERVICE DETAILS */}
+      {/* SERVICE DETAILS — tight top spacing */}
       {SERVICES.map((service, index) => {
         const reverse = index % 2 === 1;
         return (
           <section
             key={service.number}
             className="w-full"
-            style={{ backgroundColor: index % 2 === 0 ? "#F7F3ED" : "#F2ECE3" }}
+            style={{ backgroundColor: index % 2 === 0 ? "#F2ECE3" : "#F7F3ED" }}
           >
             <div
               className="container-content"
-              style={{ paddingTop: "72px", paddingBottom: "72px" }}
+              style={{ paddingTop: "32px", paddingBottom: "64px" }}
             >
               <div
                 className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-16 ${reverse ? "lg:flex-row-reverse" : ""}`}

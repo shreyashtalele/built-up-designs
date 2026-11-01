@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Explore the residential and commercial interior design projects by Built Up Designs in Nashik. See our video walkthroughs and design work.",
   alternates: {
-    canonical: "https://buildupdesigns.com/our-work",
+    canonical: "https://builtupdesigns.com/our-work",
   },
   openGraph: {
     title: "Our Work | Built Up Designs — Interior Design Projects in Nashik",

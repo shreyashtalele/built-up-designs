@@ -22,7 +22,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://buildupdesigns.com"),
+  metadataBase: new URL("https://builtupdesigns.com"),
   title: {
     default: "Built Up Designs | Interior Design Studio in Nashik",
     template: "%s | Built Up Designs",
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Built Up Designs",
-    url: "https://built-up-designs.vercel.app",
+    url: "https://builtupdesigns.com",
     title: "Built Up Designs | Interior Design Studio in Nashik",
     description:
       "Nashik-based interior design studio creating warm, functional homes and workspaces.",
     images: [
       {
-        url: "https://built-up-designs.vercel.app/og-image.png",
+        url: "https://builtupdesigns.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Built Up Designs — Interior Design Studio in Nashik",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     title: "Built Up Designs | Interior Design Studio in Nashik",
     description:
       "Nashik-based interior design studio creating warm, functional homes and workspaces.",
-    images: ["https://built-up-designs.vercel.app/og-image.png"],
+    images: ["https://builtupdesigns.com/og-image.png"],
   },
   robots: {
     index: true,
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://buildupdesigns.com",
+    canonical: "https://builtupdesigns.com",
   },
 };
 
@@ -96,21 +96,22 @@ export const viewport: Viewport = {
 // Local Business JSON-LD
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://buildupdesigns.com",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  "@id": "https://builtupdesigns.com",
   name: "Built Up Designs",
   alternateName: "Built Up Designs Interior Studio",
   description:
     "Interior design studio based in Nashik, Maharashtra. Creating warm, functional homes and workspaces.",
-  url: "https://buildupdesigns.com",
+  url: "https://builtupdesigns.com",
   telephone: "+917507520026",
   email: "designsbuiltup@gmail.com",
-  image: "https://buildupdesigns.com/og-image.png",
-  logo: "https://buildupdesigns.com/images/logo/logo-main.svg",
+  image: "https://builtupdesigns.com/og-image.png",
+  logo: "https://builtupdesigns.com/images/logo/logo-main.svg",
   priceRange: "₹₹",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "M.G. Road",
+    streetAddress:
+      "Gala No. 2, Ground Floor, Hansa Laxmi, Fawade Lane, M.G. Road",
     addressLocality: "Nashik",
     addressRegion: "Maharashtra",
     postalCode: "422001",
@@ -165,7 +166,7 @@ const faqSchema = {
       name: "Do you work on residential and commercial projects?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. We design both residential interiors (homes, villas, apartments) and commercial spaces (offices, retail, hospitality) across Nashik.",
+        text: "Yes. We design both residential interiors and commercial spaces across Nashik.",
       },
     },
     {
@@ -173,23 +174,15 @@ const faqSchema = {
       name: "How long does an interior design project take?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most residential projects take 6–12 weeks, depending on the scale, scope, and site conditions. Commercial projects may vary. We share a clear timeline after the first site visit.",
+        text: "Most residential interior projects typically take 6–12 months, depending on the project size, design requirements, scope of work, and site conditions. Commercial project timelines may vary. We provide an estimated project timeline after understanding your requirements and site visit.",
       },
     },
     {
       "@type": "Question",
-      name: "What areas of Nashik do you serve?",
+      name: "Do you provide 3D designs and mood boards?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We serve all major areas of Nashik, including Gangapur Road, College Road, Panchavati, Nashik Road, Indira Nagar, Cidco, Satpur, Ambad, Deolali, and surrounding regions.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you provide 3D designs and material samples?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Our design process includes detailed 3D visualizations, material palettes, and physical samples so you can see and feel the design before execution.",
+        text: "Yes. Our design process includes detailed 3D visualizations, thoughtfully curated mood boards, and material palettes to help you visualize the overall design, colours, textures, and finishes before execution begins.",
       },
     },
     {
@@ -197,7 +190,7 @@ const faqSchema = {
       name: "How much does interior design cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Cost depends on the scope — the size of the space, the materials used, and the level of customization. We offer a free consultation to understand your requirements and provide a transparent quote.",
+        text: "The cost depends on the size of the space, project requirements, design scope, material selection, and level of customization. At Built Up Designs, we offer a complimentary first site visit to understand your requirements, discuss your vision, and provide a transparent, customized quotation.",
       },
     },
     {
@@ -205,7 +198,7 @@ const faqSchema = {
       name: "Do you handle execution or only design?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We handle end-to-end interior design — from concept and detailed drawings to vendor coordination, site supervision, and final handover.",
+        text: "At Built Up Designs, we specialize in complete interior design consultation, from concept development and detailed drawings to material selection and site coordination. While execution is handled by contractors or the client, we provide professional guidance and regular site visits to ensure the work aligns with the approved design.",
       },
     },
   ],
@@ -238,7 +231,9 @@ export default function RootLayout({
       </head>
       <body className="bg-surface font-body text-on-surface antialiased">
         <Header />
-        <main className="pt-16 md:pt-[72px] min-h-screen">{children}</main>
+        <main className="pt-20 md:pt-[88px] lg:pt-[92px] min-h-screen">
+          {children}
+        </main>
         <Footer />
         <WhatsAppFloat />
         <WhatsAppPopup />

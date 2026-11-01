@@ -11,23 +11,23 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "Interior Design Studio in Nashik",
+  title: "Interior Design Studio in Nashik | Built Up Designs",
   description:
-    "Built Up Designs is a Nashik-based interior design studio creating warm, functional homes and workspaces. Residential and commercial interiors with natural materials and thoughtful layouts.",
+    "Nashik-based interior design studio for residential and commercial spaces. Space planning, 3D visualization, and design consultation.",
   alternates: {
-    canonical: "https://buildupdesigns.com",
+    canonical: "https://builtupdesigns.com",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://built-up-designs.vercel.app",
+    url: "https://builtupdesigns.com",
     siteName: "Built Up Designs",
     title: "Built Up Designs | Interior Design Studio in Nashik",
     description:
-      "Nashik-based interior design studio creating warm, functional homes and workspaces.",
+      "Nashik-based interior design studio for residential and commercial spaces.",
     images: [
       {
-        url: "https://built-up-designs.vercel.app/og-image.png",
+        url: "https://builtupdesigns.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Built Up Designs — Interior Design Studio in Nashik",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Built Up Designs | Interior Design Studio in Nashik",
     description:
-      "Nashik-based interior design studio creating warm, functional homes and workspaces.",
-    images: ["https://built-up-designs.vercel.app/og-image.png"],
+      "Nashik-based interior design studio for residential and commercial spaces.",
+    images: ["https://builtupdesigns.com/og-image.png"],
   },
 };
 

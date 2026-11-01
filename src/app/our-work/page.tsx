@@ -1,304 +1,610 @@
 // src/app/our-work/page.tsx
 "use client";
 
-import { useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CONTACT } from "@/lib/constants";
 
-type VideoProject = {
+type Project = {
   id: string;
   title: string;
-  description: string;
-  year: string;
   category: string;
+  description: string;
   tags: string[];
-  duration: string;
-  videoSrc: string;
-  posterSrc: string;
+  images: string[];
 };
 
-type PhotoProject = {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  imageSrc: string;
-};
-
-const VIDEO_PROJECTS: VideoProject[] = [
+const PROJECTS: Project[] = [
   {
-    id: "warm-contemporary-residence",
-    title: "The Warm Contemporary Residence",
-    description:
-      "A modern home blending warm wood finishes, marble-look surfaces, and soft ambient lighting. Thoughtful storage and playful study spaces create a welcoming, balanced interior.",
-    year: "2025",
-    category: "Residential",
-    tags: ["Kitchen & Living", "Custom Millwork", "Bedroom & Study"],
-    duration: "00:33",
-    videoSrc: "/videos/project-1.mp4",
-    posterSrc: "/images/hero/hero-image.webp",
-  },
-  {
-    id: "modern-office-suite",
-    title: "The Modern Office Suite",
-    description:
-      "A refined workspace featuring warm wood accents, marble-textured walls, and clean white reception counters. Layered lighting and comfortable seating create a polished, welcoming atmosphere.",
-    year: "2025",
+    id: "warm-contemporary-office",
+    title: "The Warm Contemporary Office",
     category: "Commercial",
-    tags: ["Reception Design", "Workspace Interiors", "Custom Millwork"],
-    duration: "00:24",
-    videoSrc: "/videos/project-2.mp4",
-    posterSrc: "/images/hero/hero-imgae-2.webp",
+    description:
+      "Marble-effect surfaces, rich walnut finishes and fluted detailing create a welcoming professional space with warm ambient lighting.",
+    tags: ["Natural Wood", "Marble Accents", "Warm Lighting"],
+    images: [
+      "/images/projects/project-1/1.webp",
+      "/images/projects/project-1/2.webp",
+      "/images/projects/project-1/3.webp",
+      "/images/projects/project-1/4.webp",
+    ],
+  },
+  {
+    id: "modern-practice-suite",
+    title: "The Modern Practice Suite",
+    category: "Commercial",
+    description:
+      "Clean white surfaces, charcoal cabinetry and warm timber detailing shape a composed workspace softened by integrated lighting and natural daylight.",
+    tags: [
+      "Custom Office Furniture",
+      "Wooden Panelling",
+      "Integrated Lighting",
+    ],
+    images: [
+      "/images/projects/project-2/1.webp",
+      "/images/projects/project-2/2.webp",
+      "/images/projects/project-2/3.webp",
+      "/images/projects/project-2/4.webp",
+    ],
+  },
+  {
+    id: "contemporary-family-home",
+    title: "The Contemporary Family Home",
+    category: "Residential",
+    description:
+      "Warm timber, taupe cabinetry and botanical wall panels bring a calm contemporary rhythm to thoughtfully connected living, dining and kitchen spaces.",
+    tags: ["Custom Woodwork", "Botanical Wall Art", "Modern Modular Kitchen"],
+    images: [
+      "/images/projects/project-3/1.webp",
+      "/images/projects/project-3/2.webp",
+      "/images/projects/project-3/3.webp",
+      "/images/projects/project-3/4.webp",
+      "/images/projects/project-3/5.webp",
+      "/images/projects/project-3/6.webp",
+      "/images/projects/project-3/7.webp",
+      "/images/projects/project-3/8.webp",
+    ],
+  },
+  {
+    id: "playful-bedroom-collection",
+    title: "The Playful Bedroom Collection",
+    category: "Residential",
+    description:
+      "Cricket-inspired graphics, botanical wallpapers and blush upholstery bring personality to these bedrooms, balanced by bespoke storage and soft lighting.",
+    tags: ["Themed Wall Designs", "Custom Upholstery", "Floral Wallpaper"],
+    images: [
+      "/images/projects/project-4/1.webp",
+      "/images/projects/project-4/2.webp",
+      "/images/projects/project-4/3.webp",
+    ],
   },
 ];
 
-const PHOTO_PROJECTS: PhotoProject[] = [
-  {
-    id: "warm-modern-apartment",
-    title: "Warm Modern Apartment",
-    category: "Residential",
-    description:
-      "A calm home with natural textures, layered lighting, and thoughtful spatial planning.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
-  },
-  {
-    id: "studio-library",
-    title: "Studio & Library",
-    category: "Residential",
-    description:
-      "Custom millwork, quiet corners, and warm wood finishes for focused everyday living.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80",
-  },
-  {
-    id: "kitchen-living",
-    title: "Kitchen & Living",
-    category: "Residential",
-    description:
-      "An open plan with warm wood finishes, marble surfaces, and soft ambient light.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-  },
-];
+// ─────────────────────────────────────────
+// Project Carousel (small card, on the page)
+// ─────────────────────────────────────────
+function ProjectCarousel({
+  project,
+  onImageClick,
+}: {
+  project: Project;
+  onImageClick: (projectId: string, imageIndex: number) => void;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = project.images;
 
-function VideoCard({ project }: { project: VideoProject }) {
-  const backgroundVideoRef = useRef<HTMLVideoElement>(null);
-  const foregroundVideoRef = useRef<HTMLVideoElement>(null);
-  const [videoDuration, setVideoDuration] = useState<string>(project.duration);
-
-  const handleMouseEnter = () => {
-    if (backgroundVideoRef.current) {
-      backgroundVideoRef.current.play().catch(() => {});
-    }
-    if (foregroundVideoRef.current) {
-      foregroundVideoRef.current.play().catch(() => {});
-    }
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  const handleMouseLeave = () => {
-    if (backgroundVideoRef.current) {
-      backgroundVideoRef.current.pause();
-      backgroundVideoRef.current.currentTime = 0;
-    }
-    if (foregroundVideoRef.current) {
-      foregroundVideoRef.current.pause();
-      foregroundVideoRef.current.currentTime = 0;
-    }
-  };
-
-  const handleLoadedMetadata = () => {
-    if (foregroundVideoRef.current) {
-      const seconds = Math.round(foregroundVideoRef.current.duration);
-      if (seconds > 0 && isFinite(seconds)) {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        setVideoDuration(
-          `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`,
-        );
-      }
-    }
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   return (
-    <div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        border: "1px solid rgba(217,207,192,0.5)",
-        backgroundColor: "#FBF8F3",
-        overflow: "hidden",
-        width: "100%",
-      }}
-    >
+    <div style={{ position: "relative", width: "100%" }}>
       <div
         style={{
           position: "relative",
           width: "100%",
-          aspectRatio: "16/9",
+          aspectRatio: "4/3",
           overflow: "hidden",
-          backgroundColor: "#1F1B16",
+          backgroundColor: "#EBE4D8",
+          cursor: "zoom-in",
         }}
+        onClick={() => onImageClick(project.id, currentIndex)}
       >
-        <video
-          ref={backgroundVideoRef}
-          src={project.videoSrc}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            filter: "blur(20px) brightness(0.6)",
-            transform: "scale(1.1)",
-            pointerEvents: "none",
-          }}
+        <Image
+          src={images[currentIndex]}
+          alt={`${project.title} — image ${currentIndex + 1}`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          loading="lazy"
         />
 
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundColor: "rgba(31,27,22,0.35)",
-            pointerEvents: "none",
-          }}
-        />
-
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "16px",
-          }}
-        >
-          <div
+        {/* Left arrow */}
+        {images.length > 1 && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrev();
+            }}
+            aria-label="Previous image"
             style={{
-              position: "relative",
-              height: "100%",
-              aspectRatio: "9/16",
-              boxShadow: "0 8px 30px rgba(0,0,0,0.5)",
-              overflow: "hidden",
+              position: "absolute",
+              top: "50%",
+              left: "12px",
+              transform: "translateY(-50%)",
+              width: "40px",
+              height: "40px",
+              borderRadius: "9999px",
+              backgroundColor: "rgba(247,243,237,0.95)",
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 4px 12px rgba(31,27,22,0.15)",
+              zIndex: 2,
             }}
           >
-            <video
-              ref={foregroundVideoRef}
-              src={project.videoSrc}
-              muted
-              loop
-              playsInline
-              controls
-              preload="metadata"
-              onLoadedMetadata={handleLoadedMetadata}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-          </div>
-        </div>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1F1B16"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+        )}
 
+        {/* Right arrow */}
+        {images.length > 1 && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            aria-label="Next image"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "12px",
+              transform: "translateY(-50%)",
+              width: "40px",
+              height: "40px",
+              borderRadius: "9999px",
+              backgroundColor: "rgba(247,243,237,0.95)",
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 4px 12px rgba(31,27,22,0.15)",
+              zIndex: 2,
+            }}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#1F1B16"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        )}
+
+        {/* Counter */}
         <div
           style={{
             position: "absolute",
-            top: "14px",
-            left: "14px",
-            backgroundColor: "rgba(247,243,237,0.95)",
-            color: "#8F6633",
-            fontSize: "10px",
-            fontWeight: 600,
-            padding: "5px 12px",
-            textTransform: "uppercase",
-            letterSpacing: "0.18em",
-            pointerEvents: "none",
-          }}
-        >
-          {project.category}
-        </div>
-
-        <div
-          style={{
-            position: "absolute",
-            top: "14px",
-            right: "14px",
+            bottom: "12px",
+            right: "12px",
             backgroundColor: "rgba(31,27,22,0.85)",
             color: "#F7F3ED",
             fontSize: "11px",
             fontWeight: 500,
-            padding: "5px 10px",
+            padding: "5px 12px",
             letterSpacing: "0.08em",
-            pointerEvents: "none",
-            fontVariantNumeric: "tabular-nums",
+            zIndex: 2,
           }}
         >
-          {videoDuration}
+          {currentIndex + 1} / {images.length}
         </div>
-      </div>
 
-      <div style={{ padding: "24px" }}>
+        {/* "Click to expand" hint */}
+        <div
+          style={{
+            position: "absolute",
+            top: "12px",
+            right: "12px",
+            backgroundColor: "rgba(31,27,22,0.75)",
+            color: "#F7F3ED",
+            fontSize: "9px",
+            fontWeight: 500,
+            padding: "5px 10px",
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            zIndex: 2,
+          }}
+        >
+          ⤢ Click to expand
+        </div>
+
+        {/* Dots */}
+        {images.length > 1 && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: "12px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              display: "flex",
+              gap: "6px",
+              zIndex: 2,
+            }}
+          >
+            {images.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(index);
+                }}
+                aria-label={`Go to image ${index + 1}`}
+                style={{
+                  width: index === currentIndex ? "20px" : "6px",
+                  height: "6px",
+                  borderRadius: "9999px",
+                  backgroundColor:
+                    index === currentIndex
+                      ? "#F7F3ED"
+                      : "rgba(247,243,237,0.5)",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "all 0.3s",
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────
+// Lightbox (full-screen gallery)
+// ─────────────────────────────────────────
+function Lightbox({
+  project,
+  initialIndex,
+  onClose,
+}: {
+  project: Project;
+  initialIndex: number;
+  onClose: () => void;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const images = project.images;
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") {
+        setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+      }
+      if (e.key === "ArrowRight") {
+        setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [images.length, onClose]);
+
+  // Prevent body scroll when open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        backgroundColor: "rgba(31,27,22,0.96)",
+        zIndex: 9999,
+        display: "flex",
+        flexDirection: "column",
+        padding: "20px",
+      }}
+      onClick={onClose}
+    >
+      {/* Close button */}
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close gallery"
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          width: "48px",
+          height: "48px",
+          borderRadius: "9999px",
+          backgroundColor: "rgba(247,243,237,0.15)",
+          border: "none",
+          color: "#F7F3ED",
+          cursor: "pointer",
+          fontSize: "24px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 10001,
+        }}
+      >
+        ×
+      </button>
+
+      {/* Header — project title */}
+      <div
+        style={{
+          paddingTop: "12px",
+          paddingBottom: "24px",
+          textAlign: "center",
+          color: "#F7F3ED",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <span
+          style={{
+            display: "block",
+            fontSize: "10px",
+            textTransform: "uppercase",
+            letterSpacing: "0.24em",
+            color: "#D4B37E",
+            fontWeight: 600,
+            marginBottom: "8px",
+          }}
+        >
+          {project.category}
+        </span>
         <h3
           style={{
             fontFamily: "var(--font-playfair), serif",
-            fontSize: "22px",
+            fontSize: "clamp(20px, 2.5vw, 28px)",
             lineHeight: 1.2,
-            color: "#1F1B16",
-            marginBottom: "8px",
+            margin: 0,
           }}
         >
           {project.title}
         </h3>
-        <p
+      </div>
+
+      {/* Main image area */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          minHeight: 0,
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Left arrow */}
+        {images.length > 1 && (
+          <button
+            type="button"
+            onClick={goToPrev}
+            aria-label="Previous image"
+            style={{
+              position: "absolute",
+              left: "16px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "52px",
+              height: "52px",
+              borderRadius: "9999px",
+              backgroundColor: "rgba(247,243,237,0.15)",
+              border: "none",
+              color: "#F7F3ED",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 10000,
+            }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+        )}
+
+        {/* Image */}
+        <div
           style={{
-            fontSize: "14px",
-            lineHeight: 1.65,
-            color: "#5C5247",
-            marginBottom: "16px",
+            position: "relative",
+            width: "100%",
+            height: "100%",
+            maxWidth: "1200px",
           }}
         >
-          {project.description}
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              style={{
-                fontSize: "10px",
-                textTransform: "uppercase",
-                letterSpacing: "0.14em",
-                color: "#8F6633",
-                border: "1px solid rgba(143,102,51,0.3)",
-                padding: "4px 10px",
-              }}
-            >
-              {tag}
-            </span>
-          ))}
+          <Image
+            src={images[currentIndex]}
+            alt={`${project.title} — image ${currentIndex + 1}`}
+            fill
+            style={{ objectFit: "contain" }}
+            sizes="100vw"
+            priority
+          />
         </div>
+
+        {/* Right arrow */}
+        {images.length > 1 && (
+          <button
+            type="button"
+            onClick={goToNext}
+            aria-label="Next image"
+            style={{
+              position: "absolute",
+              right: "16px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "52px",
+              height: "52px",
+              borderRadius: "9999px",
+              backgroundColor: "rgba(247,243,237,0.15)",
+              border: "none",
+              color: "#F7F3ED",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 10000,
+            }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* Bottom — thumbnails strip */}
+      <div
+        style={{
+          paddingTop: "24px",
+          paddingBottom: "12px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "8px",
+          flexWrap: "wrap",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {images.map((img, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`View image ${index + 1}`}
+            style={{
+              position: "relative",
+              width: "72px",
+              height: "72px",
+              borderRadius: "2px",
+              overflow: "hidden",
+              border:
+                index === currentIndex
+                  ? "2px solid #D4B37E"
+                  : "2px solid transparent",
+              cursor: "pointer",
+              padding: 0,
+              backgroundColor: "#EBE4D8",
+              opacity: index === currentIndex ? 1 : 0.6,
+              transition: "all 0.2s",
+            }}
+          >
+            <Image
+              src={img}
+              alt={`Thumbnail ${index + 1}`}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="72px"
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Counter */}
+      <div
+        style={{
+          textAlign: "center",
+          color: "#F7F3ED",
+          fontSize: "11px",
+          letterSpacing: "0.2em",
+          paddingBottom: "4px",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {currentIndex + 1} / {images.length} · Use ← → or click thumbnails
       </div>
     </div>
   );
 }
 
 export default function OurWorkPage() {
+  const [lightboxState, setLightboxState] = useState<{
+    projectId: string;
+    imageIndex: number;
+  } | null>(null);
+
+  const handleImageClick = (projectId: string, imageIndex: number) => {
+    setLightboxState({ projectId, imageIndex });
+  };
+
+  const activeProject = lightboxState
+    ? PROJECTS.find((p) => p.id === lightboxState.projectId) || null
+    : null;
+
   return (
     <>
       {/* HERO */}
       <section className="w-full" style={{ backgroundColor: "#F7F3ED" }}>
         <div
           className="container-content"
-          style={{ paddingTop: "32px", paddingBottom: "56px" }}
+          style={{ paddingTop: "40px", paddingBottom: "56px" }}
         >
           <div style={{ maxWidth: "800px" }}>
             <SectionLabel style={{ marginBottom: "20px" }}>
@@ -322,6 +628,7 @@ export default function OurWorkPage() {
                 lineHeight: 1.7,
                 color: "#5C5247",
                 marginBottom: "24px",
+                maxWidth: "680px",
               }}
             >
               A curated selection of residential and commercial interiors
@@ -338,70 +645,20 @@ export default function OurWorkPage() {
                 fontWeight: 600,
               }}
             >
-              <span>02 Videos</span>
-              <span style={{ opacity: 0.4 }}>·</span>
-              <span>{PHOTO_PROJECTS.length} Projects</span>
+              <span>{PROJECTS.length} Projects</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* VIDEO PROJECTS */}
+      {/* PROJECTS GRID */}
       <section className="w-full" style={{ backgroundColor: "#F2ECE3" }}>
         <div
           className="container-content"
-          style={{ paddingTop: "56px", paddingBottom: "56px" }}
+          style={{ paddingTop: "32px", paddingBottom: "72px" }}
         >
-          <div style={{ marginBottom: "40px" }}>
-            <SectionLabel style={{ marginBottom: "12px" }}>
-              Featured Videos
-            </SectionLabel>
-            <h2
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.015em",
-                color: "#1F1B16",
-              }}
-            >
-              See the spaces come to life.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {VIDEO_PROJECTS.map((project) => (
-              <VideoCard key={project.id} project={project} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PHOTO PROJECTS */}
-      <section className="w-full" style={{ backgroundColor: "#F7F3ED" }}>
-        <div
-          className="container-content"
-          style={{ paddingTop: "56px", paddingBottom: "72px" }}
-        >
-          <div style={{ marginBottom: "40px" }}>
-            <SectionLabel style={{ marginBottom: "12px" }}>
-              Selected Projects
-            </SectionLabel>
-            <h2
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.015em",
-                color: "#1F1B16",
-              }}
-            >
-              More spaces we&apos;ve designed.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {PHOTO_PROJECTS.map((project) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {PROJECTS.map((project) => (
               <div
                 key={project.id}
                 style={{
@@ -411,25 +668,19 @@ export default function OurWorkPage() {
                   border: "1px solid rgba(217,207,192,0.5)",
                 }}
               >
+                <ProjectCarousel
+                  project={project}
+                  onImageClick={handleImageClick}
+                />
+
                 <div
                   style={{
-                    position: "relative",
-                    width: "100%",
-                    aspectRatio: "4/3",
-                    overflow: "hidden",
-                    backgroundColor: "#EBE4D8",
+                    padding: "28px",
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    loading="lazy"
-                  />
-                </div>
-                <div style={{ padding: "24px" }}>
                   <span
                     style={{
                       fontSize: "10px",
@@ -437,8 +688,7 @@ export default function OurWorkPage() {
                       letterSpacing: "0.22em",
                       color: "#8F6633",
                       fontWeight: 600,
-                      display: "block",
-                      marginBottom: "8px",
+                      marginBottom: "10px",
                     }}
                   >
                     {project.category}
@@ -446,10 +696,10 @@ export default function OurWorkPage() {
                   <h3
                     style={{
                       fontFamily: "var(--font-playfair), serif",
-                      fontSize: "20px",
+                      fontSize: "24px",
                       lineHeight: 1.2,
                       color: "#1F1B16",
-                      marginBottom: "8px",
+                      marginBottom: "12px",
                     }}
                   >
                     {project.title}
@@ -457,12 +707,33 @@ export default function OurWorkPage() {
                   <p
                     style={{
                       fontSize: "14px",
-                      lineHeight: 1.65,
+                      lineHeight: 1.7,
                       color: "#5C5247",
+                      marginBottom: "20px",
+                      flex: 1,
                     }}
                   >
                     {project.description}
                   </p>
+                  <div
+                    style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}
+                  >
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        style={{
+                          fontSize: "9px",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.14em",
+                          color: "#8F6633",
+                          border: "1px solid rgba(143,102,51,0.3)",
+                          padding: "4px 10px",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -470,14 +741,14 @@ export default function OurWorkPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="w-full" style={{ backgroundColor: "#F2ECE3" }}>
+      {/* INSTAGRAM CTA */}
+      <section className="w-full" style={{ backgroundColor: "#F7F3ED" }}>
         <div
           className="container-content"
-          style={{ paddingTop: "56px", paddingBottom: "56px" }}
+          style={{ paddingTop: "64px", paddingBottom: "64px" }}
         >
           <div
-            style={{ maxWidth: "640px", textAlign: "center", margin: "0 auto" }}
+            style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}
           >
             <SectionLabel
               style={{
@@ -486,30 +757,30 @@ export default function OurWorkPage() {
                 justifyContent: "center",
               }}
             >
-              Stay Connected
+              See More
             </SectionLabel>
             <h2
               style={{
                 fontFamily: "var(--font-playfair), serif",
-                fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
                 lineHeight: 1.15,
-                letterSpacing: "-0.01em",
+                letterSpacing: "-0.015em",
                 color: "#1F1B16",
                 marginBottom: "16px",
               }}
             >
-              Follow us for more projects.
+              More spaces we&apos;ve designed.
             </h2>
             <p
               style={{
-                fontSize: "15px",
+                fontSize: "16px",
                 lineHeight: 1.7,
                 color: "#5C5247",
-                marginBottom: "24px",
+                marginBottom: "28px",
               }}
             >
-              New interiors, behind-the-scenes work, and design inspirations on
-              our Instagram.
+              Follow us on Instagram for the latest projects, behind-the-scenes
+              work, and design inspiration.
             </p>
             <div
               style={{
@@ -527,18 +798,32 @@ export default function OurWorkPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: "8px",
+                  gap: "10px",
                   backgroundColor: "#1F1B16",
                   color: "#F7F3ED",
-                  fontSize: "11px",
+                  fontSize: "12px",
                   textTransform: "uppercase",
                   letterSpacing: "0.18em",
                   fontWeight: 500,
-                  padding: "12px 22px",
+                  padding: "14px 24px",
                   textDecoration: "none",
                 }}
               >
-                Follow @built_up_designs
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+                Follow on Instagram
               </a>
               <Link
                 href="/contact"
@@ -548,11 +833,11 @@ export default function OurWorkPage() {
                   justifyContent: "center",
                   border: "1px solid rgba(31,27,22,0.6)",
                   color: "#1F1B16",
-                  fontSize: "11px",
+                  fontSize: "12px",
                   textTransform: "uppercase",
                   letterSpacing: "0.18em",
                   fontWeight: 500,
-                  padding: "12px 22px",
+                  padding: "14px 24px",
                   textDecoration: "none",
                 }}
               >
@@ -562,6 +847,15 @@ export default function OurWorkPage() {
           </div>
         </div>
       </section>
+
+      {/* LIGHTBOX */}
+      {lightboxState && activeProject && (
+        <Lightbox
+          project={activeProject}
+          initialIndex={lightboxState.imageIndex}
+          onClose={() => setLightboxState(null)}
+        />
+      )}
     </>
   );
 }

@@ -52,7 +52,7 @@ export function AboutPreview() {
                   right: "-20px",
                   backgroundColor: "#FBF8F3",
                   padding: "20px",
-                  maxWidth: "240px",
+                  maxWidth: "260px",
                   border: "1px solid rgba(217,207,192,0.5)",
                   boxShadow: "0 8px 30px rgba(31,27,22,0.06)",
                 }}
@@ -60,12 +60,12 @@ export function AboutPreview() {
                 <span
                   style={{
                     display: "block",
-                    fontSize: "10px",
+                    fontSize: "11px",
                     textTransform: "uppercase",
                     letterSpacing: "0.22em",
                     color: "#8F6633",
                     fontWeight: 600,
-                    marginBottom: "6px",
+                    marginBottom: "8px",
                   }}
                 >
                   Our Approach
@@ -92,23 +92,25 @@ export function AboutPreview() {
             transition={{ duration: 0.9, ease, delay: 0.15 }}
             className="w-full lg:w-1/2"
           >
-            <SectionLabel style={{ marginBottom: "16px" }}>
+            <SectionLabel style={{ marginBottom: "20px" }}>
               About the Studio
             </SectionLabel>
 
             <h2
               style={{
                 fontFamily: "var(--font-playfair), serif",
-                fontSize: "clamp(1.75rem, 3vw, 2.75rem)",
+                fontSize: "clamp(2rem, 3.5vw, 3rem)",
                 lineHeight: 1.1,
                 letterSpacing: "-0.015em",
                 color: "#1F1B16",
                 marginBottom: "24px",
               }}
             >
-              Thoughtful interiors,
+              Thoughtful Designs,
               <br className="hidden sm:block" />
-              designed around you.
+              Beautiful Spaces,
+              <br className="hidden sm:block" />
+              Inspired Living.
             </h2>
 
             <p
@@ -120,10 +122,11 @@ export function AboutPreview() {
                 maxWidth: "540px",
               }}
             >
-              Built Up Designs is a Nashik-based interior design studio creating
-              warm, functional homes and workspaces. We avoid passing trends,
-              focusing instead on practical layouts, natural materials, and
-              lighting that lasts.
+              Built Up Designs is an interior design studio specializing in
+              residential and commercial spaces. We believe every space should
+              reflect the personality, lifestyle, and vision of its occupants
+              while maintaining a perfect balance of aesthetics and
+              functionality.
             </p>
 
             <p
@@ -135,9 +138,12 @@ export function AboutPreview() {
                 maxWidth: "540px",
               }}
             >
-              From private residences in Nashik to boutique commercial spaces,
-              our studio handles every detail — from spatial planning and
-              joinery design to material selection and site coordination.
+              With a personalized approach, we offer comprehensive interior
+              design consultation, from space planning and 3D visualization to
+              detailed drawings, material selection, and site coordination. Our
+              focus is on creating elegant, practical, and timeless interiors
+              while guiding our clients through every stage of their design
+              journey.
             </p>
 
             <Link

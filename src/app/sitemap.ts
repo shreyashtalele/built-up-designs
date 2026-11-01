@@ -4,7 +4,7 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://buildupdesigns.com";
+  const baseUrl = "https://builtupdesigns.com";
   const now = new Date();
 
   return [
@@ -40,3 +40,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
+

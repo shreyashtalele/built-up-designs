@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Get in touch with Built Up Designs — Nashik interior design studio. Call, WhatsApp, or email us. Studio at M.G. Road, Nashik.",
   alternates: {
-    canonical: "https://buildupdesigns.com/contact",
+    canonical: "https://builtupdesigns.com/contact",
   },
   openGraph: {
     title: "Contact Built Up Designs — Interior Design Studio Nashik",

@@ -10,37 +10,37 @@ const STEPS = [
   {
     number: "01",
     title: "Consultation",
-    tag: "Discovery",
+    subtitle: "Understanding Your Vision",
     description:
-      "We begin with a conversation — your lifestyle, aesthetic, and what you want the space to do for you.",
+      "We begin by understanding your requirements, lifestyle, design preferences, and budget to create a space that reflects your vision.",
   },
   {
     number: "02",
-    title: "Understanding",
-    tag: "Analysis",
+    title: "Site Analysis",
+    subtitle: "Space Evaluation & Planning",
     description:
-      "Site visit, spatial analysis, measurements, budget, and timeline. We map the realities before design begins.",
+      "We conduct site visits, take measurements, and evaluate the space to develop practical and functional design solutions.",
   },
   {
     number: "03",
-    title: "Design Planning",
-    tag: "Concepts",
+    title: "Concept Development",
+    subtitle: "Planning & Visualization",
     description:
-      "Conceptual layouts, functional floor plans, and moodboards. The direction takes shape.",
+      "We create furniture layouts, space plans, mood boards, and 3D visualizations to bring your ideas to life.",
   },
   {
     number: "04",
-    title: "Design Development",
-    tag: "Detail",
+    title: "Design Detailing",
+    subtitle: "Drawings & Material Selection",
     description:
-      "Detailed drawings, joinery design, material selections, and 3D views. Everything is specified.",
+      "We prepare detailed furniture drawings, electrical layouts, false ceiling designs, and assist in selecting materials, finishes, and colours.",
   },
   {
     number: "05",
-    title: "Guidance",
-    tag: "Handover",
+    title: "Project Guidance",
+    subtitle: "Execution & Site Coordination",
     description:
-      "Vendor coordination, site supervision, and quality checks through to handover.",
+      "We provide regular site visits, coordinate with contractors, and offer design guidance throughout execution to ensure the project aligns with the approved design.",
   },
 ];
 
@@ -52,45 +52,48 @@ export function HowWeWork() {
         style={{ paddingTop: "72px", paddingBottom: "72px" }}
       >
         {/* Header */}
-        <div style={{ maxWidth: "560px", marginBottom: "56px" }}>
-          <div style={{ marginBottom: "16px" }}>
-            <SectionLabel>How We Work</SectionLabel>
-          </div>
+        <div style={{ maxWidth: "640px", marginBottom: "64px" }}>
+          <SectionLabel style={{ marginBottom: "16px" }}>
+            How We Work
+          </SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-playfair), serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.75rem)",
+              fontSize: "clamp(2rem, 3.5vw, 3rem)",
               lineHeight: 1.1,
               letterSpacing: "-0.015em",
               color: "#1F1B16",
             }}
           >
-            A simple process,
-            <br className="hidden sm:block" />
-            thoughtful results.
+            From Ideas to Beautifully Designed Spaces.
           </h2>
         </div>
 
-        {/* Steps */}
+        {/* Steps container — relative for the connector line */}
         <div style={{ position: "relative" }}>
-          {/* Connector line — hidden on mobile, spans from center of first circle to center of last circle */}
+          {/* Connector line — desktop only, positioned to align with circle centers */}
           <div
             className="hidden lg:block"
             aria-hidden="true"
             style={{
               position: "absolute",
               top: "26px",
-              left: "26px", // center of first circle (52px / 2)
-              right: "26px", // center of last circle
+              left: "26px",
+              right: "26px",
               height: "1px",
               backgroundColor: "#D9CFC0",
               zIndex: 0,
             }}
           />
 
+          {/* Grid — 5 columns on desktop */}
           <div
-            className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-6"
-            style={{ position: "relative", zIndex: 1 }}
+            className="grid grid-cols-1 lg:grid-cols-5"
+            style={{
+              gap: "24px",
+              position: "relative",
+              zIndex: 1,
+            }}
           >
             {STEPS.map((step, index) => (
               <motion.div
@@ -99,74 +102,73 @@ export function HowWeWork() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, ease, delay: index * 0.08 }}
-                style={{ position: "relative" }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
               >
-                {/* Number circle + tag */}
+                {/* Circle number — fixed size, no wrapping */}
                 <div
                   style={{
+                    width: "52px",
+                    height: "52px",
+                    borderRadius: "9999px",
+                    backgroundColor: "#F2ECE3",
+                    border: "1px solid #8F6633",
+                    color: "#8F6633",
                     display: "flex",
                     alignItems: "center",
-                    gap: "16px",
+                    justifyContent: "center",
+                    fontFamily: "var(--font-playfair), serif",
+                    fontSize: "18px",
+                    flexShrink: 0,
                     marginBottom: "24px",
+                    position: "relative",
+                    zIndex: 2,
                   }}
                 >
-                  {/* Circle — solid background so it covers the line */}
-                  <div
-                    style={{
-                      width: "52px",
-                      height: "52px",
-                      borderRadius: "9999px",
-                      backgroundColor: "#F2ECE3", // solid — same as section bg, covers the line
-                      border: "1px solid #8F6633",
-                      color: "#8F6633",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontFamily: "var(--font-playfair), serif",
-                      fontSize: "18px",
-                      flexShrink: 0,
-                      position: "relative",
-                      zIndex: 2,
-                    }}
-                  >
-                    {step.number}
-                  </div>
-
-                  {/* Tag with background to cover the line where it passes */}
-                  <span
-                    style={{
-                      fontSize: "10px",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.22em",
-                      color: "#8F6633",
-                      fontWeight: 600,
-                      backgroundColor: "#F2ECE3",
-                      padding: "4px 0",
-                      position: "relative",
-                      zIndex: 2,
-                    }}
-                  >
-                    {step.tag}
-                  </span>
+                  {step.number}
                 </div>
 
+                {/* Title — now fixed min-height so all align */}
                 <h3
                   style={{
                     fontFamily: "var(--font-playfair), serif",
                     fontSize: "20px",
-                    lineHeight: 1.2,
+                    lineHeight: 1.25,
                     color: "#1F1B16",
-                    marginBottom: "12px",
+                    marginBottom: "8px",
+                    minHeight: "50px",
                   }}
                 >
                   {step.title}
                 </h3>
 
+                {/* Subtitle — small caps */}
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: "10px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.18em",
+                    color: "#8F6633",
+                    fontWeight: 600,
+                    lineHeight: 1.5,
+                    marginBottom: "16px",
+                    minHeight: "30px",
+                  }}
+                >
+                  {step.subtitle}
+                </span>
+
+                {/* Description */}
                 <p
                   style={{
-                    fontSize: "14px",
-                    lineHeight: 1.7,
+                    fontSize: "13px",
+                    lineHeight: 1.65,
                     color: "#5C5247",
+                    margin: 0,
                   }}
                 >
                   {step.description}

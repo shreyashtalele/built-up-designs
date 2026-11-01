@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://buildupdesigns.com/sitemap.xml
+Sitemap: https://builtupdesigns.com/sitemap.xml
