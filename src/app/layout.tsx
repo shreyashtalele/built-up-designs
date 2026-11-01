@@ -245,6 +245,8 @@ export default function RootLayout({
       style={{ colorScheme: "light" }}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.webp" type="image/webp" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
