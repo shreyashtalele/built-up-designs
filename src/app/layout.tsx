@@ -1,26 +1,55 @@
 // src/app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 import { WhatsAppPopup } from "@/components/ui/WhatsAppPopup";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  display: "swap",
+const playfair = localFont({
+  src: [
+    {
+      path: "../../public/fonts/PlayfairDisplay-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PlayfairDisplay-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
   variable: "--font-playfair",
-  weight: ["400", "500", "600", "700"],
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
   display: "swap",
-  variable: "--font-jakarta",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
+const jakarta = localFont({
+  src: [
+    {
+      path: "../../public/fonts/PlusJakartaSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PlusJakartaSans-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PlusJakartaSans-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PlusJakartaSans-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 export const metadata: Metadata = {
   metadataBase: new URL("https://builtupdesigns.com"),
   title: {
