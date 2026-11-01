@@ -44,57 +44,6 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           padding: "20px 20px 32px",
         }}
       >
-        {/* Small header inside drawer for depth */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            paddingBottom: "16px",
-            marginBottom: "8px",
-            borderBottom: "1px solid rgba(217,207,192,0.6)",
-          }}
-        >
-          <div
-            style={{
-              position: "relative",
-              width: "40px",
-              height: "40px",
-              flexShrink: 0,
-            }}
-          >
-            <Image
-              src="/images/logo/logo-main.svg"
-              alt="Built Up Designs"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span
-              style={{
-                fontFamily: "var(--font-playfair), serif",
-                fontSize: "14px",
-                color: "#1F1B16",
-                lineHeight: 1.2,
-              }}
-            >
-              Built Up Designs
-            </span>
-            <span
-              style={{
-                fontSize: "9px",
-                textTransform: "uppercase",
-                letterSpacing: "0.22em",
-                color: "#8F6633",
-                marginTop: "2px",
-              }}
-            >
-              Interior Studio · Nashik
-            </span>
-          </div>
-        </div>
-
         {NAV_LINKS.map((link) => (
           <Link
             key={link.href}

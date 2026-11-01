@@ -5,7 +5,6 @@ import { AboutPreview } from "@/components/sections/AboutPreview";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { HowWeWork } from "@/components/sections/HowWeWork";
-import { SelectedWork } from "@/components/sections/SelectedWork";
 import { ProjectVideo } from "@/components/sections/ProjectVideo";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTASection } from "@/components/sections/CTASection";
@@ -30,16 +29,9 @@ export const metadata: Metadata = {
         url: "https://builtupdesigns.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Built Up Designs — Interior Design Studio in Nashik",
+        alt: "Built Up Designs",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Built Up Designs | Interior Design Studio in Nashik",
-    description:
-      "Nashik-based interior design studio for residential and commercial spaces.",
-    images: ["https://builtupdesigns.com/og-image.png"],
   },
 };
 
@@ -51,7 +43,6 @@ export default function HomePage() {
       <ServicesOverview />
       <ServiceAreas />
       <HowWeWork />
-      <SelectedWork />
       <ProjectVideo />
       <FAQ />
       <CTASection />

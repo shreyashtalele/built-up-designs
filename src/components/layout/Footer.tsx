@@ -41,20 +41,20 @@ export function Footer() {
     >
       <div
         className="container-content"
-        style={{ paddingTop: "32px", paddingBottom: "24px" }}
+        style={{ paddingTop: "32px", paddingBottom: "16px" }}
       >
-        {/* Main Grid — 4 columns */}
+        {/* Main Grid — 2 cols on mobile, 4 cols on desktop */}
         <div
-          className="grid grid-cols-1 md:grid-cols-12 gap-8"
+          className="grid grid-cols-2 md:grid-cols-12 gap-6 md:gap-8"
           style={{
-            paddingBottom: "24px",
+            paddingBottom: "20px",
             borderBottom: "1px solid #D9CFC0",
           }}
         >
-          {/* BRAND — 4 cols */}
+          {/* BRAND — Full width on mobile, 4 cols on desktop */}
           <div
-            className="md:col-span-4"
-            style={{ display: "flex", flexDirection: "column", gap: "14px" }}
+            className="col-span-2 md:col-span-4"
+            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
           >
             <Link
               href="/"
@@ -69,8 +69,8 @@ export function Footer() {
               <div
                 style={{
                   position: "relative",
-                  width: "56px",
-                  height: "56px",
+                  width: "48px",
+                  height: "48px",
                   flexShrink: 0,
                 }}
               >
@@ -85,7 +85,7 @@ export function Footer() {
                 <p
                   style={{
                     fontFamily: "var(--font-playfair), serif",
-                    fontSize: "18px",
+                    fontSize: "16px",
                     lineHeight: 1.2,
                     color: "#1F1B16",
                     margin: 0,
@@ -97,7 +97,7 @@ export function Footer() {
                   style={{
                     fontFamily: "var(--font-playfair), serif",
                     fontStyle: "italic",
-                    fontSize: "11px",
+                    fontSize: "10px",
                     color: "#8F6633",
                     margin: "2px 0 0 0",
                   }}
@@ -109,7 +109,7 @@ export function Footer() {
             <p
               style={{
                 fontSize: "12px",
-                lineHeight: 1.6,
+                lineHeight: 1.5,
                 color: "#5C5247",
                 maxWidth: "320px",
               }}
@@ -156,10 +156,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* EXPLORE — 3 cols */}
+          {/* EXPLORE — 1 col on mobile, 3 cols on desktop */}
           <div
-            className="md:col-span-3"
-            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            className="col-span-1 md:col-span-3"
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
             <span
               style={{
@@ -173,14 +173,14 @@ export function Footer() {
               Explore
             </span>
             <nav
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+              style={{ display: "flex", flexDirection: "column", gap: "6px" }}
             >
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   style={{
-                    fontSize: "13px",
+                    fontSize: "12px",
                     color: "#5C5247",
                     textDecoration: "none",
                   }}
@@ -191,10 +191,10 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* STUDIO — 3 cols */}
+          {/* STUDIO — 1 col on mobile, 3 cols on desktop */}
           <div
-            className="md:col-span-3"
-            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            className="col-span-1 md:col-span-3"
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
             <span
               style={{
@@ -210,7 +210,7 @@ export function Footer() {
             <div>
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "12px",
                   fontWeight: 600,
                   color: "#1F1B16",
                   margin: 0,
@@ -220,17 +220,17 @@ export function Footer() {
               </p>
               <p
                 style={{
-                  fontSize: "12px",
+                  fontSize: "11px",
                   color: "#5C5247",
                   margin: "4px 0 0 0",
-                  lineHeight: 1.5,
+                  lineHeight: 1.4,
                 }}
               >
                 {CONTACT.address.display}
               </p>
               <p
                 style={{
-                  fontSize: "11px",
+                  fontSize: "10px",
                   color: "rgba(92,82,71,0.7)",
                   margin: "6px 0 0 0",
                   textTransform: "uppercase",
@@ -242,10 +242,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* CONTACT — 2 cols */}
+          {/* CONTACT — Full width on mobile, 2 cols on desktop */}
           <div
-            className="md:col-span-2"
-            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            className="col-span-2 md:col-span-2"
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
             <span
               style={{
@@ -259,12 +259,12 @@ export function Footer() {
               Contact
             </span>
             <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+              style={{ display: "flex", flexDirection: "column", gap: "6px" }}
             >
               <a
                 href={`tel:${CONTACT.phone}`}
                 style={{
-                  fontSize: "13px",
+                  fontSize: "12px",
                   color: "#5C5247",
                   textDecoration: "none",
                 }}
@@ -274,7 +274,7 @@ export function Footer() {
               <a
                 href={`mailto:${CONTACT.email}`}
                 style={{
-                  fontSize: "12px",
+                  fontSize: "11px",
                   color: "#5C5247",
                   textDecoration: "none",
                   wordBreak: "break-all",
@@ -291,15 +291,16 @@ export function Footer() {
           style={{
             paddingTop: "16px",
             display: "flex",
-            flexWrap: "wrap",
-            gap: "12px",
-            justifyContent: "space-between",
+            flexDirection: "column",
+            gap: "8px",
             alignItems: "center",
+            textAlign: "center",
           }}
+          className="md:!flex-row md:!justify-between md:!text-left"
         >
           <p
             style={{
-              fontSize: "10px",
+              fontSize: "9px",
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "rgba(92,82,71,0.7)",
@@ -310,7 +311,7 @@ export function Footer() {
           </p>
           <p
             style={{
-              fontSize: "10px",
+              fontSize: "9px",
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "rgba(92,82,71,0.7)",

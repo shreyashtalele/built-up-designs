@@ -182,15 +182,19 @@ export default function AboutPage() {
                   marginBottom: "16px",
                 }}
               >
-                Vaishnavi leads Built Up Designs with a simple belief: good
-                interiors are made from clarity, warmth, and materials that age
-                well.
+                With over 6 years of experience in interior design, Vaishnavi
+                Mogare founded Built Up Designs with a vision to create spaces
+                that beautifully balance aesthetics, functionality, and
+                individuality.
               </p>
               <p
                 style={{ fontSize: "15px", lineHeight: 1.7, color: "#5C5247" }}
               >
-                Her studio handles residential and commercial interiors across
-                Nashik — from the first site visit to the final handover.
+                Her passion for design, creative approach, and attention to
+                detail drive every project. Specializing in residential and
+                commercial interiors, she believes in understanding each
+                client's vision and transforming it into thoughtfully designed
+                spaces through personalized solutions and dedicated guidance.
               </p>
             </div>
           </div>
