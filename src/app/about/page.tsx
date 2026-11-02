@@ -182,7 +182,7 @@ export default function AboutPage() {
                   marginBottom: "16px",
                 }}
               >
-                With over 6 years of experience in interior design, Vaishnavi
+                With over 7 years of experience in interior design, Vaishnavi
                 Mogare founded Built Up Designs with a vision to create spaces
                 that beautifully balance aesthetics, functionality, and
                 individuality.

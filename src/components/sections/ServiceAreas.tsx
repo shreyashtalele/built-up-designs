@@ -54,8 +54,8 @@ export function ServiceAreas() {
               marginBottom: "32px",
             }}
           >
-            From private residences to boutique commercial spaces, we design
-            interiors across all major areas of Nashik.
+            From private residences to commercial spaces, we design interiors
+            across all major areas of Nashik.
           </p>
 
           <div

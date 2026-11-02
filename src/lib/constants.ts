@@ -33,7 +33,7 @@ export const LOCATIONS = {
     label: "Studio",
     area: "M.G. Road",
     description:
-      "Our studio is based in Nashik. We design homes, villas, and boutique commercial spaces across the city.",
+      "Our studio is based in Nashik. We design homes, villas, and commercial spaces across the city.",
   },
 } as const;
 

@@ -48,7 +48,7 @@ const SERVICES = [
   {
     number: "02",
     title: "Commercial Interiors",
-    subtitle: "Corporate & Boutique",
+    subtitle: "Corporate & Commercial",
     description:
       "Functional and stylish spaces designed for work, business, and everyday experiences. We translate executive stature and hospitality identity into durable, tactile architecture.",
     capabilities: [
