@@ -19,14 +19,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://builtupdesigns.com",
+    url: "https://built-up-designs.vercel.app/og-image.png",
     siteName: "Built Up Designs",
     title: "Built Up Designs | Interior Design Studio in Nashik",
     description:
       "Nashik-based interior design studio for residential and commercial spaces.",
     images: [
       {
-        url: "https://builtupdesigns.com/og-image.png",
+        url: "https://built-up-designs.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Built Up Designs",
