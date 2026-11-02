@@ -55,7 +55,7 @@ const jakarta = localFont({
 const BASE_URL = "https://built-up-designs.vercel.app";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL("https://built-up-designs.vercel.app"),
   title: {
     default: "Built Up Designs | Interior Design Studio in Nashik",
     template: "%s | Built Up Designs",
@@ -84,13 +84,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Built Up Designs",
-    url: BASE_URL,
+    url: "https://built-up-designs.vercel.app",
     title: "Built Up Designs | Interior Design Studio in Nashik",
     description:
       "Nashik-based interior design studio creating warm, functional homes and workspaces.",
     images: [
       {
-        url: `${BASE_URL}/og-image.png`,
+        url: "https://built-up-designs.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Built Up Designs — Interior Design Studio in Nashik",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     title: "Built Up Designs | Interior Design Studio in Nashik",
     description:
       "Nashik-based interior design studio creating warm, functional homes and workspaces.",
-    images: [`${BASE_URL}/og-image.png`],
+    images: ["https://built-up-designs.vercel.app/og-image.png"],
   },
   robots: {
     index: true,
@@ -115,10 +115,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: BASE_URL,
+    canonical: "https://built-up-designs.vercel.app",
   },
 };
-
 export const viewport: Viewport = {
   colorScheme: "light",
   themeColor: "#F7F3ED",
