@@ -51,9 +51,6 @@ const jakarta = localFont({
   display: "swap",
 });
 
-// ⚠️ TEMPORARY: Using Vercel URL for testing. Change back to builtupdesigns.com before Hostinger deploy.
-const BASE_URL = "https://built-up-designs.vercel.app";
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://built-up-designs.vercel.app"),
   title: {
